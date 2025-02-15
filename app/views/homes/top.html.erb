@@ -1,2 +1,31 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<%= stylesheet_link_tag 'application', 'home_top_styles.css' %>
+
+<div class="bg-image">
+<div class="bg-text">
+
+  <div class="container">
+    <div class="row top-page">
+      <div class="col text">
+        <p>
+          <%= image_tag("icon/Welcom.png", alt: "welcom to レトロジア", width: 600, height: 120, class: "d-inline-block align-text-top mr-2") %>
+        </p>
+        <br>
+        <h4>
+          レトロジアはあなたの好きな場所・好きなものを記録し<br>
+          共有するためのプラットフォームです。<br>
+          <br>
+          閲覧まではサインインなしで利用可能ですが、<br>
+          記録をするにはログインが必要です。<br>
+        </h4>
+      </div>
+
+      <div class="col login-btn-area">
+        <%= button_to "Log in", new_user_session_path, method: :get , class: "login-button" %>
+        <%= button_to "Sign up", new_user_registration_path, method: :get , class: "login-button" %>
+        <%= button_to "Gest sign in", users_guest_sign_in_path, method: :get , class: "login-button" %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+</div>

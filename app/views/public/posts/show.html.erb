@@ -1,0 +1,106 @@
+<%= stylesheet_link_tag 'post_show_styles' %>
+
+<div class="container">
+	<div class="row views">
+    
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'sidebar' %>
+    </div>
+
+    <div class="col-9 post-show"> 
+    <!-- 投稿詳細 -->
+      <div class="row post-image">
+        <div class="post-image-bg">
+          <% if @post.post_image.attached? %>
+            <%= image_tag url_for(@post.post_image), size: "300x250" %>
+          <% else %>
+            <%= image_tag 'noimage.png', size: "300x250" %>
+          <% end %>
+        </div>
+      </div>
+
+      <br>
+      <% if @user == current_user %>
+      <span class="row btn-area">
+        <%= button_to "Edit", edit_public_post_path(@post), method: :get , class: "edit-button" %>
+        <%= button_to "Delete", public_post_path(@post), method: :delete , class: "delete-button" %>
+      </span>
+      <% end %>
+      <br>
+
+      <div class="row info">
+        <table class="table post-info">
+          <tbody>
+            <tr>
+              <th  class="col-4 info-title">タイトル</th>
+              <td class="col-6"> <%= @post.title %></td>
+            </tr>
+            <tr>
+              <th class="col-4 info-title">ユーザー名</th>
+              <td class="col-6 info-name">
+                <%= link_to public_user_path(@user.id), class: 'btn post-user' do %>
+                  <%= @post.user.name %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th class="col-4 info-title">詳細</th>
+              <td class="col-6"><%= @post.contents %></td>
+            </tr>
+            <tr>
+              <th class="col-4 info-title">場所</th>
+              <td class="col-6"><%= @post.address %></td>
+            </tr>
+            <tr>
+              <th class="col-4 info-title">訪問日</th>
+              <td class="col-6"><%= @post.visited_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table post-link-list">
+          <tbody>
+            <tr>
+              <td class="col-3"></td>
+              <td class="col-1">
+              <%= link_to public_post_post_comment_path(@post.id), class: 'btn post-link' do %>
+                <i class="fa-solid fa-comment fa-xl"></i>
+              <% end %>
+              </td>
+              <td class="col-1">
+              <%= link_to root_path, class: 'btn post-link' do %>
+                <i class="fa-solid fa-heart fa-xl"></i>
+              <% end %>
+              </td>
+              <td class="col-1">
+              <%= link_to root_path, class: 'btn post-link' do %>
+                <i class="fa-solid fa-bookmark fa-xl"></i>
+              <% end %>
+              </td>
+              <td class="col-1">
+              <%= link_to root_path, class: 'btn post-link' do %>
+                <i class="fa-solid fa-location-dot fa-xl"></i>
+              <% end %>
+              </td>
+              <td class="col-3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+
+      <div class="row back-btn-area">
+        <button class="btn back-button" onclick="goBack()">戻る</button>
+        <script>
+        function goBack() {
+          window.history.back(); // ブラウザの履歴を1つ前に戻る
+        }
+        </script>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'user_show_styles' %>
+
+<div class="container">
+	<div class="row views">
+    
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %> 
+    </div>
+
+    <div class="col-10 user-show"> 
+      <div class="attention-area">
+        <div class="attention">
+          <h2 class="font-weight-bold">本当に退会しますか？</h2>
+        </div>
+
+        <div class="attention-word">
+          退会すると投稿がすべて破棄されます。<br>
+          退会する場合は、「退会」ボタンを<br>
+          クリックしてください。
+        </div>
+
+        <div class="attention-btn-area">
+          <%= button_to "戻る", public_user_path(current_user.id), method: :get , class: "btn back-button" %>  <%= button_to "退会する", leave_public_users_path, method: :patch, class: "btn delete-button" %>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>

@@ -1,2 +1,35 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<%= stylesheet_link_tag 'new_post_styles' %>
+
+<div class="container">
+	<div class="row views">
+    
+    <div class="col-2 sidebar">
+    <!-- サイドバー --> 
+    <%= render 'sidebar' %>
+    </div>
+
+    <div class="col-9"> 
+    <!-- 入力フォーム --> 
+      <div class="row">
+        <div class="col p-forms">
+          <h2 class = "title"> Edit</h2> 
+          <br>
+            <div class="flash">
+                    <%= flash[:notice] %>
+            </div>
+          <br>
+          <% if @post.errors.any? %>
+            <%= @post.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <br>
+          <%= render 'form', post: @post, form_url: public_post_path, submit_text: ' 編集 ' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,74 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<%= stylesheet_link_tag 'index_feed_styles' %>
+
+<div class="container">
+	<div class="row views">
+
+    <div class="col-2 sidebar"> 
+      <!-- サイドバー -->  
+      <%= render 'sidebar' %>
+    </div>
+
+    <div class="col-9 main-content"> 
+    <!--メイン-->
+      <br>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+      
+      <% if user_signed_in? %>
+        <%= render 'searches/search', url_path:public_search_path %>
+      <% end %>
+      <br>
+
+      <div class="posts">
+        <table class='table table-hover'>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td>
+                  <span class="image">
+                    <% if post.post_image.attached? %>
+                      <%= link_to public_post_path(post), class: 'side-nav-item' do %>
+                        <%= image_tag url_for(post.post_image), size: "250x200" %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to public_post_path(post), class: 'side-nav-item' do %>
+                        <%= image_tag 'noimage.png', size: "250x200" %>
+                      <% end %>
+                    <% end %>
+                  </span>
+                  </td>
+                  <td class="post-info">
+                  <span>
+                    <br>
+                    <br>
+                  </span>
+                  <span class="">
+                    <%= link_to public_post_path(post), class: 'btn post-title' do %>
+                      <%= post.title %><br>
+                    <% end %>
+                  </span>
+                  <span>
+                    <br>
+                  </span>
+                  <span class="">
+                    <%= link_to public_user_path(post.user.id), class: 'btn post-user' do %>
+                      <%= post.user.name %>
+                    <% end %>
+                  </span>
+                  <span>
+                    <br>
+                  </span>
+                  <span class="post-tags">
+                    <%=  %>
+                  </span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,2 +1,38 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<%= stylesheet_link_tag 'user_show_styles' %>
+
+<div class="container">
+  <div class="row views">
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %>
+    </div>
+
+    <div class="col-10 user-show"> 
+    <!-- ユーザー詳細 -->
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+        <%= render 'userinfo', user: @user, allow_edit:@allow_edit, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
+      </div>
+      <br>
+      <div class="line"></div>
+      <br>
+
+      <div class="row user-posts">
+        <div class="row user-post-image">
+          <% @posts.each do |post| %>
+            <% if post.post_image.attached? %>
+              <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                <%= image_tag url_for(post.post_image), size: "150x100" %>
+              <% end %>
+            <% else %>
+              <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                <%= image_tag 'noimage.png', size: "150x100" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="sidebar-item">
+  <div class="side-icon">
+    <%= link_to root_path do %>
+      <%= image_tag("icon/camera.logo2.png", alt: "Logo", width: 90, height: 75, class: "d-inline-block align-text-top mr-2") %>
+    <% end %>
+  </div>
+
+
+      <% if admin_signed_in?  %>
+          <!-- アドミンサイドバー -->
+      <% elsif user_signed_in? %>
+        <!-- ユーザーサイドバー -->
+
+          <%= link_to public_posts_path, class: 'btn side-nav-item' do %>
+            Home
+          <% end %>
+
+          <%= link_to new_public_post_path, class: 'btn side-nav-item' do %>
+            New
+          <% end %>
+
+        <%= link_to public_user_path(current_user.id), class: 'btn side-nav-item' do %>
+          MyPage
+        <% end %>
+
+          <%= link_to following_feed_public_posts_path, class: 'btn side-nav-item' do %>
+            <!-- Preference -->
+          <% end %>
+
+          <%= link_to public_post_bookmarked_posts_path(current_user.id), class: 'btn side-nav-item' do %>
+            <!-- Bookmark -->
+          <% end %>
+
+          <%= link_to root_path, class: 'side-nav-item' do %>
+          <% end %>
+
+          <%= link_to public_user_followings_path(current_user.id), class: 'btn side-nav-item' do %>
+            <!-- Follower -->
+          <% end %>
+
+      <% else %>
+        <!-- 非ログイン時 --> 
+
+          <%= link_to public_posts_path, class: 'btn side-nav-item' do %>
+            Home
+          <% end %>
+
+          <%= link_to new_user_session_path, class: 'btn side-nav-item' do %>
+            Log in
+          <% end %>
+
+          <%= link_to new_user_registration_path, class: ' btn side-nav-item' do %>
+            Sing up
+          <% end %>
+      <% end %>
+
+</div>

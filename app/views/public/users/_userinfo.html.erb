@@ -1,0 +1,46 @@
+<div class="row user_image">
+  <% if user.user_image.attached? %>
+    <%= image_tag url_for(@user.user_image), size: "250x200" %>
+  <% else %>
+    <%= image_tag 'icon/camera.logo2.png', size: "250x200" %>
+  <% end %>
+</div>
+<div class="row user-info">
+  <table class="table table-borderless user-table-edit">
+  <tr>
+    <% if allow_edit %>
+      <th></th>
+      <td>
+        <%= link_to btn_path, class: btn_class do %>
+          <%= btn_name %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+  </table>
+  <table class ="table user-table">
+    <tr>
+      <th>User Nmae</th>
+      <td colspan="5"></td>
+      <td>
+        <%= user.name %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Introduction</th>
+      <td colspan="5"></td>
+      <td>
+        <%= user.introduction %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>User ID</th>
+      <td colspan="5"></td>
+      <td>
+        <%= user.unique_id %>
+      </td>
+      <td></td>
+    </tr>
+  </table>
