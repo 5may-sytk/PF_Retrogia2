@@ -1,0 +1,64 @@
+<header class="custom">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <!-- ロゴ --> 
+        <div class="row">
+          <%= link_to root_path do %>
+            <%= image_tag("icon/logo.png", alt: "Logo", width: 200, height: 75, class: "d-inline-block align-text-top mr-2") %>
+          <% end %>
+        </div>
+        <div class="flash">
+          <%= flash[:comment] %>
+        </div>
+        <!-- メニュー --> 
+        <div class="row">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <% if admin_signed_in?  %>
+              <!-- アドミンヘッダー --> 
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Top', root_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Users', admin_users_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Log out', destroy_admin_session_path, class: 'btn btn-custom', style: 'font-size: 20px;', method: :delete %>
+                </li>
+
+              <% elsif user_signed_in? %>
+              <!-- ユーザーヘッダー --> 
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Home', public_posts_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'New', new_public_post_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'MyPage', public_user_path(current_user.id), class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Log out',destroy_user_session_path, class: 'btn btn-custom', style: 'font-size: 20px;', method: :delete %>
+                </li>
+
+              <% else %>
+              <!-- 非ログイン時 --> 
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'About', about_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Home', public_posts_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Log in', new_user_session_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                </li>
+                <li class="nav-item" style="padding-left: 10px;">
+                  <%= link_to 'Sing up', new_user_registration_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
