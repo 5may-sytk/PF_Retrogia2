@@ -1,2 +1,62 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/user/show.html.erb</p>
+<%= stylesheet_link_tag 'admin_u_show' %>
+
+<div class="container">
+	<div class="row a-views">
+
+      <!-- ユーザー詳細 -->
+      <div class="col a-user-info">
+        <%= render 'public/users/userinfo', user: @user, allow_edit:@allow_edit %>
+        
+        <div class="col line"></div>
+          <table class="table a-user-status"
+            <tr>
+              <th>公開情報</th>
+              <td>
+              <% if @user.is_public? %>
+                <%= "公開" %>
+              <% else %>
+                <%= "非公開" %>
+              <% end %>
+              </td>
+              <td class="radio-btn-form">
+                <%= form_with(model: @user, url: admin_user_path(@user.id), local: true) do |f| %>
+                <%= f.collection_radio_buttons :is_public, [[true, '公開'], [false, '非公開']], :first, :last %>
+              </td>
+            </tr>
+            <tr>
+              <th>ステータス</th>
+              <td>
+              <% if @user.is_active? %>
+                <%= "現行ユーザー" %>
+              <% else %>
+                <%= "退会済み" %>
+              <% end %>
+              </td>
+              <td class="radio-btn-form">
+                <%= f.collection_radio_buttons :is_active, [[true, '継続'], [false, '退会']], :first, :last %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <div class="row submit-btn-area">
+                <th></th>
+                <td>
+                  <%= f.submit "設定変更", class: "btn btn-sm submit-button" %>
+                <% if @user.is_active == true %>
+                <% else %>
+                  <%= button_to "削除", admin_user_path, method: :delete , class: "btn btn-sm delete-button", data: { confirm: "本当に削除しますか？" } %>
+                <% end %>
+                </td>
+              </div>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
