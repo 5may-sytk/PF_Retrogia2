@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.comment-views {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.c-p-image {
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.p-comment-form {
+}

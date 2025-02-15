@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: rgba(98, 45, 24, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 横方向、縦方向、ぼかし量、色を指定 */
+  z-index: 1000;
+  font-family: Century Gothic;
+}
+
+.btn-custom {
+  color: #622d18;
+}
+
+footer {
+  background-color: rgba(98, 45, 24, 0.2);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* 横方向、縦方向、ぼかし量、色を指定 */
+  z-index: 1000;
+}
+
+body {
+  background-color: rgba(234, 232, 225, 0.5);
+}
+
+.flash {
+  text-align: center;
+}

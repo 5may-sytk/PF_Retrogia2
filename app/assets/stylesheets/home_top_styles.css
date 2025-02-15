@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-image {
+  position: relative;
+  background-image: url('bg-image/PENTAFANPK98003_TP_V.jpg');
+  /*  background-image: image-url("bg-image/PENTAFANPK98003_TP_V.jpg");  */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg-image::before { 
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(84, 145, 127, 0.6); /* 透明度を選ぶためrgba */
+  transform: skewY(-10deg);/* 図形を傾斜させる */
+  z-index: 1;
+}
+
+.bg-text { 
+  z-index: 2; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 要素の中央寄せ */
+}
+
+.text {
+  color:#eae8e1;
+  -webkit-text-stroke: 1px #eae8e1; 
+  text-stroke: 1px #eae8e1;
+}
+
+.login-btn-area{
+  display: flex;
+  justify-content: center; /* 水平方向（横方向）に中央寄せ */
+  margin-top: 40px;
+}
+

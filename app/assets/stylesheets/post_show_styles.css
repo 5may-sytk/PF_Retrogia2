@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.post-show{
+  margin-top: 20px;
+}
+
+.post-info {
+  text-align: center;
+}
+
+.post-image {
+  display: flex;
+  justify-content: center;
+}
+
+.post-image-bg {
+  background-color: white; /* 背景色を白に設定 */
+  padding: 10px; /* 内側の余白を追加して額縁風にする */
+  border: 1px solid #999893; /* 黒い枠線を追加 */
+  border-radius: 5px; /* 枠線の角を丸くする */
+}
+
+.user-info {
+  margin: auto;
+}
+
+.btn-area{
+  display: flexbox;
+  justify-content: flex-end; /* アイテムを右寄せに配置 */
+}
+
+.back-btn-area {
+  display: flexbox;
+  justify-content: center;
+}
+
+.post-link-links {
+  padding-top: 30px;
+}

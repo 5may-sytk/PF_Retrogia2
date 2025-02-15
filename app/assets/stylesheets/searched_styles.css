@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.searched-content {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.search_form {
+  display: flex;
+  justify-content: center;
+}
+
+.search_form_groupe {
+  margin-right: 10px; /* 適宜間隔を調整 */
+}
+
+.search_form_groupe:last-child {
+  margin-bottom: 10px;
+  
+}
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search_form_groupe {
+  margin-bottom: 10px; /* 下部の余白を設定 */
+  font-family: Century Gothic;
+}

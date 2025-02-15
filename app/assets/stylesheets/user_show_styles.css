@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-show {
+  margin-top: 20px;
+}
+
+.user_image {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.user-info {
+  margin-left: 50px;
+  font-family: Century Gothic;
+}
+
+.user-table-edit {
+  text-align: right
+}
+
+.user-table {
+  text-align: center;
+}
+
+.line {
+  border-top: 2px dashed #622d18;
+}
+
+.user-posts {
+  display: flexbox;
+  flex-wrap: wrap-reverse;
+}
+
+.user-post-image {
+  margin: 10px;
+  text-align: center;
+}
+
+.user-post-image:last-child {
+  margin: 0 auto; /* 画像を水平方向に中央に配置 */
+  display: block;
+}

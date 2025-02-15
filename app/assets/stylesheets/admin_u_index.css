@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-users {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.a-search_form {
+  display: flexbox;
+  justify-content: right;
+  margin-left: 20px;
+}
+
+.a-search_form_groupe {
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+

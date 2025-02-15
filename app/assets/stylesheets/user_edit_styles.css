@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.u-edit-forms {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.form-groupe {
+  padding: 15px;
+}
+
+.attention-area{
+  text-align: center;
+}
+
+.attention {
+  padding-top: 50px;
+}
+
+.attention-word {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: large;
+}
+
+.attention-btn-area {
+  display: flex;
+  justify-content: center;
+}

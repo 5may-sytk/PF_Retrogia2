@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.views {
+  margin-bottom: 20px;
+}
+
+.search_form {
+  display: flex;
+}
+
+.search_form_group input,
+.search_form_group select {
+  flex: 1; /* 入力フィールドとセレクトボックスを均等に配置 */
+}
+
+.search_form_group select {
+  margin-left: 10px; /* セレクトボックスの左側にマージンを設定 */
+}
+
+.search_button {
+  width: 100%; /* 検索ボタンを全幅に広げる */
+}
+
+.sidebar {
+  position: sticky;
+  top: 0; /* 画面の上部に固定 */
+  height: 100%; /* サイドバーの高さを100%にする */
+  background-color: rgba(84, 145, 127, 0.4); /* 背景色を設定 */
+  padding: 20px; /* サイドバーの内側の余白を設定 */
+  box-shadow: 10px 0 15px -5px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.5); 
+  /* 右と下に影を追加, 水平,垂直,ブラー半径,スプレッド半径  */
+}
+
+.sidebar-item{
+  font-family: Century Gothic;
+}
+
+.side-icon{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.side-nav {
+  text-align: center;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.side-nav-item {
+  font-size: 25px;
+  color: #622d18;
+}
+
+
+.main-content {
+  padding: 20px;
+  margin-left: 50px;
+}
+
+.post-info{
+  text-align: center;
+}
+
+.post-title {
+  color: #622d18;
+  font-size: 25px;
+  margin: 0 auto;
+}
+.post-user {
+  color: #622d18;
+  font-size: 15px;
+}
+.post-tags{
+  color: #622d18;
+  font-size: 15px;
+}

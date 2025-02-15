@@ -1,0 +1,149 @@
+.login-button {
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  margin-right: 20px;
+  border: 2px solid #622d18;
+  color: white;
+  background-color:#622d18;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+}
+.login-button:hover {
+  background-color: transparent; /* 背景色を透明にする */
+  color: white; /* ホバー時のテキスト色 */
+  border: 2px solid #a3ccc0; /* アウトラインを設定 */
+  font-weight: bold;
+}
+
+.submit-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #545a91;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  background-color: #545a91; 
+  color: white; /* デフォルトのテキスト色 */
+  font-weight: bold;
+  font-weight: bold;
+}
+
+.submit-button:hover{
+  background-color: transparent; /* 背景色を透明にする */
+  color: #545a91; /* ホバー時のテキスト色 */
+  border: 2px solid #545a91; /* アウトラインを設定 */
+  font-weight: bold;
+}
+
+.edit-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  margin-right: 10px;
+  border: 2px solid #54917f;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  background-color: #54917f; 
+  color: white; /* デフォルトのテキスト色 */
+  font-weight: bold;
+}
+
+.edit-button:hover{
+  background-color: transparent; /* 背景色を透明にする */
+  color: #54917f; /* ホバー時のテキスト色 */
+  border: 2px solid #54917f; /* アウトラインを設定 */
+  font-weight: bold;
+}
+
+.delete-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+  border: 2px solid #915467;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  background-color:#915467;
+  color: white;
+  font-weight: bold;
+}
+
+.delete-button:hover{
+  background-color: transparent; /* 背景色を透明にする */
+  color: #915467; /* ホバー時のテキスト色 */
+  border: 2px solid #915467; /* アウトラインを設定 */
+  font-weight: bold;
+}
+
+.unsubsribe-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #915467;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  background-color:#915467;
+  color: white;
+  font-weight: bold;
+}
+
+.unsubsribe-button:hover{
+  background-color: transparent; /* 背景色を透明にする */
+  color: #915467; /* ホバー時のテキスト色 */
+  border: 2px solid #915467; /* アウトラインを設定 */
+  font-weight: bold;
+}
+
+.back-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #545a91;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  background-color: #545a91; 
+  color: white; /* デフォルトのテキスト色 */
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.back-button:hover{
+  background-color: transparent; /* 背景色を透明にする */
+  color: #545a91; /* ホバー時のテキスト色 */
+  border: 2px solid #545a91; /* アウトラインを設定 */
+  font-weight: bold;
+}
+.now--button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #622d18; /* アウトラインを設定 */
+  background-color: transparent; /* 背景色を透明にする */
+  color: #622d18; /* ホバー時のテキスト色 */
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.search-button {
+  margin-left: 5px;
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(84, 145, 127, 0.4); /* 背景色を設定 */
+  border: none;
+  color: #622d18; 
+  font-weight: bold;
+  font-family: Century Gothic;
+}
+
+.search-button:hover {
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(84, 145, 127, 0.5); /* 背景色を設定 */
+  color: #622d18; 
+  font-weight: bold;
+  font-family: Century Gothic;
+}

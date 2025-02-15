@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.a-views {
+  display: flex;
+  justify-content: center;
+}
+
+.a-user-info {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.a_user_image {
+  margin-top: 50px;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  border-top: 2px dashed rgba(98, 45, 24, 0.2);
+  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-left: 100px;
+}
+
+.a-user-status {
+  margin-left: 20px;
+}
+
+.radio-btn-form {
+  display: flex;
+  gap: 0px;
+  justify-content: center;
+  text-align: center;
+}
+.radio-btn-form label {
+  /*line-height: 2;  テキストの上下方向の余白を調整 */
+  padding-top: 5px;
+}
+
+.submit-btn-area {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-left: 200px;
+}
