@@ -1,1 +1,10 @@
 @use "~bootstrap/scss/bootstrap"; 
+@import './buttons.scss';
+@import './home_top_styles';
+@import './home_about_styles';
+@import './post_index_styles.scss';
+@import './post_show_styles.scss';
+@import './post_new_styles.scss';
+@import './post_comment_styles.scss';
+@import './user_edit_styles.scss';
+@import './user_show_styles.scss';
