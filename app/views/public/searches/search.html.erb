@@ -1,0 +1,66 @@
+<%= stylesheet_link_tag 'searched_styles' %>
+
+<div class="container">
+	<div class="row views">
+
+    <div class="col-2 sidebar"> 
+      <!-- サイドバー -->  
+      <%= render 'public/posts/sidebar' %> 
+    </div>
+
+    <div class="col-9 searched-content"> 
+      <!-- 検索結果画面 -->
+      <h2 class = "title"> Results Search</h2> 
+      <div class="row results">
+        <table class="table table-hover table-inverse">
+          <% if @range == "User" %>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <% if user.user_image.attached? %>
+                      <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                        <%= image_tag url_for(user.user_image), size: "175x150" %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                        <%= image_tag 'icon/camera.logo2.png', size: "175x150" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                      <%= user.name %></td>
+                    <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          <% else %>
+            <tbody>
+              <% @posts.each do |post| %>
+                <tr>
+                  <td>
+                    <% if post.post_image.attached? %>
+                      <%= link_to public_post_path(post), class: 's-post-image' do %>
+                        <%= image_tag url_for(post.post_image), size: "175x150" %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to public_post_path(post), class: 's-post-image' do %>
+                        <%= image_tag 'noimage.png', size: "175x150" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to public_post_path(post), class: 's-post-title' do %>
+                      <%= post.title %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

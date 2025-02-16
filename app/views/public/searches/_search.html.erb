@@ -1,0 +1,13 @@
+<div class="row search_form">
+  <%= form_with url: url_path, local: true, method: :get, class: "form-inline" do |f| %>
+    <div class="col-sm-7 mb-6 search_form_groupe">
+      <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力してください", size:40;%>
+    </div>
+    <div class="col-sm-2 mb-2 search_form_groupe">
+    <%= f.collection_select :range, ["User", "Post"], :to_s, :humanize, {}, { class: "form-control" } %>    
+    </div>
+    <div class="col-sm-2 search_form_groupe">
+      <%= f.submit "Search", class: "btn search-button" %>
+    </div>
+  <% end %>
+</div>
