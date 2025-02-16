@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'post_comment_styles' %>
+
+<div class="container">
+	<div class="row views">
+    
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %> 
+    </div>
+
+    <div class="col-10 comment-view"> 
+    <!-- コメント作成 -->
+      <div class="row c-p-image">
+        <div class="col-5">
+          <% if @post.post_image.attached? %>
+            <%= image_tag url_for(@post.post_image), size: "150x125" %>
+          <% else %>
+            <%= image_tag 'noimage.png', size: "150x125" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="p-comment-form">
+        <%= form_with(model: [:public, @post, @post_comment]) do |f| %>
+          <div class="col-7 comment-form">
+            <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control" %>
+          </div>
+          <div class="col-2 comment-form">
+            <%= f.submit "送信", class: "form-control" %>
+          </div>
+        <% end %>
+      </div>
+      <%= @post_comments.inspect %>
+      </div>
+  
+  </div>
+</div>
