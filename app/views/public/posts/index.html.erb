@@ -13,9 +13,11 @@
         <%= flash[:notice] %>
       </div>
       
+      <div class="row">
       <% if user_signed_in? %>
         <%= render 'public/searches/search', url_path:public_search_path %>
       <% end %>
+      </div>
       <br>
 
       <div class="posts">
