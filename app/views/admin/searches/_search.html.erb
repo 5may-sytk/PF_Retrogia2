@@ -1,0 +1,11 @@
+<div class="row a-search_form">
+  <%= form_with url: url_path, local: true, method: :get, class: "form-inline" do |f| %>
+    <div class="col-sm-7 mb-6 a-search_form_groupe">
+      <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力してください", size:30;%>
+      <%= f.hidden_field :range, value: "User" %>
+    </div>
+    <div class="col-sm-2 a-search_form_groupe">
+      <%= f.submit "Search", class: "btn search-button" %>
+    </div>
+  <% end %>
+</div>

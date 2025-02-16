@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row views">
+
+    <div class="col-9 searched-content"> 
+      <!-- 検索結果画面 -->
+      <h2 class = "title"> Results Search</h2> 
+      <div class="row results">
+        <table class="table table-hover table-inverse">
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <% if user.user_image.attached? %>
+                    <%= link_to admin_user_path(user.id), class: 'post-user' do %>
+                      <%= image_tag url_for(user.user_image), size: "175x150" %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to admin_user_path(user.id), class: 'post-user' do %>
+                      <%= image_tag 'icon/camera.logo2.png', size: "175x150" %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to admin_user_path(user.id), class: 'post-user' do %>
+                    <%= user.name %></td>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

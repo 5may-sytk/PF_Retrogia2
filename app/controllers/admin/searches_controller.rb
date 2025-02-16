@@ -10,7 +10,10 @@ class Admin::SearchesController < ApplicationController
       return
     end
 
-    return if @word.blank?
+    if @word.blank?
+      redirect_to root_path
+      return
+    end
   
     if @word.match(/\A[a-zA-Z0-9]{10}\z/)
       @users = User.where(unique_id: @word)
