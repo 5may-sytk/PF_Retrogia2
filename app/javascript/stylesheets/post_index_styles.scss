@@ -39,19 +39,24 @@
   font-family: Century Gothic;
 }
 
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
 .side-icon{
   text-align: center;
   margin-bottom: 20px;
 }
 
 .side-nav {
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
   list-style-type: none;
 }
 
 .side-nav-item {
-  font-size: 20px;
+  font-size: 18px;
   color: #622d18;
 }
 
