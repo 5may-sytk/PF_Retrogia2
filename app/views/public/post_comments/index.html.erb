@@ -64,11 +64,12 @@
                     <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                   </td>
                   <td> 
-                  
+                  <% if post_comment.user == current_user %>
                     <span class="row btn-area">
-                      <%= button_to "Edit", edit_public_post_post_comment_path(@post, @post_comment_id), class: "edit-button" %>
-                      <%= button_to "Delete", public_post_post_comment_path(@post, @post_comment_id), method: :delete , class: "delete-button" %>
+                      <%= link_to "Edit", edit_public_post_post_comment_path(@post, post_comment.id), class: "edit-button" %>
+                      <%= link_to "Delete", public_post_post_comment_path(@post, post_comment.id), method: :delete , class: "delete-button" %>
                     </span>
+                  <% end %>
                   </td>
                 </tr>
               <% end %>
