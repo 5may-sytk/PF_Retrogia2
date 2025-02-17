@@ -7,54 +7,75 @@
     </div>
 
     <div class="col-10 comment-view"> 
+    <h2 class = "title"> Comment</h2> 
+    <br>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+      <% if @post_comment.errors.any? %>
+        <div id="error">
+          <ul>
+            <% @post_comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <br>
     <!-- コメント作成 -->
       <div class="row c-p-image">
-        <div class="col-5">
+        <div class="col-3">
           <% if @post.post_image.attached? %>
             <%= image_tag url_for(@post.post_image), size: "150x125" %>
           <% else %>
             <%= image_tag 'noimage.png', size: "150x125" %>
           <% end %>
         </div>
-      </div>
+      
 
-      <div class="p-comment-form">
+      <div class="col-8 p-comment-form">
         <%= form_with(model: [:public, @post, @post_comment]) do |f| %>
-          <div class="col-7 comment-form">
-            <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control" %>
+          <div class="comment-form">
+            <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control", size:40; %>
           </div>
-          <div class="col-2 comment-form">
-            <%= f.submit "送信", class: "form-control" %>
+          <div class="comment-form">
+            <%= f.submit "送信", class: "form-control com-submit-btn" %>
           </div>
         <% end %>
+      </div>
       </div>
         <br>
       <div class="col line">
       </div>
 
       <div class"row comments">
-          <table class="table  table-hover">
+          <table class="table  table-inline">
+            <thead>
+              <tr>
+                <th>コメント</th>
+                <th>ユーザー名</th>
+                <th>投稿時間</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               <% @post_comments.each do |post_comment| %>
                 <tr>
                   <td>
                     <%= post_comment.comment %>
-                  <td>
-                </tr>
-                <tr>
+                  </td>
                   <td>
                     <%= post_comment.user.name %>
-                  <td>
-                </tr>
-                <tr>
+                  </td>
                   <td>
                     <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-                  <td>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
       </div>
   
+    </div>
   </div>
 </div>
