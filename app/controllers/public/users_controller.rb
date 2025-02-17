@@ -7,7 +7,6 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(10)
     
     return unless @user == current_user 
-    #return unless current_user.email != self.guest_user_email
     @allow_edit = true
   end
 

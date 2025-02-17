@@ -18,9 +18,27 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
+    
+  end
+
+  def edit
+    @post = Post.find(params[:post_id])
+    @post_comment = PostComment.find(params[:id])
+    if @Post_comment.update(comment_params)
+      redirect_to public_post_post_comments_path(@post)
+    else
+      flash.now[:notice] = "コメントの編集に失敗しました"
+      redirect_to public_post_post_comments_path(@post)
+    end
+  end
+
+  def update
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
+    @post_comment = PostComment.find(params[:id])
+    @post_comment.destroy
   end
 
   private
@@ -29,7 +47,6 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def reject_guest_user_comment
-    @post = Post.find(params[:post_id])
     @user = current_user
     if @user.email == "guest@example.com"
       redirect_to public_post_post_comments_path(@post) , notice: 'コメントにはログインが必要です'
