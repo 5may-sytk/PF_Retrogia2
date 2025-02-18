@@ -32,3 +32,8 @@
   margin-bottom: 10px; /* 下部の余白を設定 */
   font-family: Century Gothic;
 }
+
+#error {
+  list-style-type: none; /* リストの先頭のマーカー（ドット）を非表示にする */
+  padding-left: 0; /* リストの左側の余白をゼロにする */
+}

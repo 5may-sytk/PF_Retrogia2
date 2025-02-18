@@ -11,7 +11,7 @@ class Public::SearchesController < ApplicationController
     end
 
     if @word.blank?
-      redirect_to root_path
+      redirect_to public_posts_path
       return
     end
   

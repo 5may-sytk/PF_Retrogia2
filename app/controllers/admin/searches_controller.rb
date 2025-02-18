@@ -11,7 +11,7 @@ class Admin::SearchesController < ApplicationController
     end
 
     if @word.blank?
-      redirect_to root_path
+      redirect_to admin_users_path
       return
     end
   

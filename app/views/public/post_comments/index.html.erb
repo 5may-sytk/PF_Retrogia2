@@ -11,7 +11,6 @@
     <br>
       <div class="flash">
         <%= flash[:notice] %>
-      </div>
       <% if @post_comment.errors.any? %>
         <div id="error">
           <ul>
@@ -21,6 +20,7 @@
           </ul>
         </div>
       <% end %>
+      </div>
     <br>
     <!-- コメント作成 -->
       <div class="row c-p-image">
