@@ -27,8 +27,17 @@
                 <%= image_tag 'noimage.png', size: "150x100" %>
               <% end %>
             <% end %>
+            <div class="user-post-info">
+              <%= post.title %><br>
+              <%= post.visited_at.strftime('%m/%d %H:%M') %>
+            </div>
           <% end %>
+
         </div>
+      </div>
+      <br>
+      <div class="row back-btn-area">
+        <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
       </div>
     </div>
   </div>

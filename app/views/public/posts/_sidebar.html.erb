@@ -26,7 +26,7 @@
             MyPage
           <% end %>
 
-          <%= link_to following_feed_public_posts_path, class: 'btn side-nav-item' do %>
+          <%= link_to public_post_favorites_path(current_user.id), class: 'btn side-nav-item' do %>
             Favorite
           <% end %>
 
