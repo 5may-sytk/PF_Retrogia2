@@ -2,11 +2,12 @@
 	<div class="row a-views">
     <!-- ユーザー詳細 -->
     <div class="col a-user-info">
-      <%= render 'public/users/userinfo', user: @user, allow_edit:@allow_edit %>        
+      <%= render 'public/users/userinfo', user: @user, allow_edit:@allow_edit %>
       <div class="col-12 line"></div>
 
+      <div class="col-8 a-user-status">
       <%= form_with(model: @user, url: admin_user_path(@user.id), local: true) do |f| %>
-        <table class="table a-user-status">
+        <table class="table ">
           <tr>
             <th>公開情報</th>
             <td>
@@ -38,9 +39,9 @@
               <br>
             </td>
           </tr>
-          <tr class="row submit-btn-area">
+          <tr >
             <th></th>
-            <td>
+            <td class="row submit-btn-area">
               <%= f.submit " 保存 ", class: "btn btn-sm submit-button" %>
             <% if !@user.is_active %>
               <%= link_to "削除", admin_user_path, method: :delete , class: "btn btn-sm delete-button" %>
@@ -49,6 +50,8 @@
           </tr>
         </table>
       <% end %>
+      </div>
+
     </div>
   </div>
 </div>

@@ -9,13 +9,6 @@
   justify-content: center;
 }
 
-.a-user-info {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 10px;
-}
-
 .a_user_image {
   margin-top: 50px;
 }
@@ -26,11 +19,10 @@
   border-top: 2px dashed rgba(98, 45, 24, 0.2);
   margin-bottom: 20px;
   margin-top: 5px;
-  margin-left: 100px;
 }
 
 .a-user-status {
-  margin-left: 20px;
+  margin: 0 auto;
 }
 
 .radio-btn-form {
@@ -45,9 +37,8 @@
 }
 
 .submit-btn-area {
-  display: flex;
-  justify-content: end;
+  text-align: center;
   gap: 10px;
   margin-bottom: 20px;
-  padding-left: 200px;
+  margin-left: 75px;
 }
