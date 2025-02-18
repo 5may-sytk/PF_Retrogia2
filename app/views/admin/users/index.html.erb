@@ -13,6 +13,7 @@
               <th></th>
               <th>ユーザー名</th>
               <th>ユニークID</th>
+              <th>ステータス</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +36,9 @@
                   </td>
                   <td>
                     <%= user.unique_id %>
+                  </td>
+                  <td class="u-status <%= user.is_active? ? 'active' : '' %>">
+                    <%= user.is_active? ? "現行ユーザー" : "退会済み" %>
                   </td>
               </tr>
             <% end %>
