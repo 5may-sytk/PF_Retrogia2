@@ -9,7 +9,7 @@ class User < ApplicationRecord
           validates :name, presence: true
           # 名前を日本語に限定
           validates :name, format: { with: /\A[A-Za-zぁ-んァ-ヶー一-龠]+\z/, message: "は日本語で入力してください" }
-          validates :introduction, length: { maximum: 300 }
+          validates :introduction, length: { maximum: 100 }
 
 
         

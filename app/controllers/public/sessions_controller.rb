@@ -4,6 +4,10 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_end_user, only: [:create]
 
+  def after_sign_in_path_for(resource)
+    public_posts_path
+  end
+
   protected
 
   def reject_end_user
