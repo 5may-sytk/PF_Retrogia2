@@ -54,6 +54,10 @@
               <th class="col-4 info-title">訪問日</th>
               <td class="col-6"><%= @post.visited_at.strftime('%Y/%m/%d') %></td>
             </tr>
+            <tr>
+              <th class="col-4 info-title">公開範囲</th>
+              <td class="col-6"><%= @post.visibility %></td>
+            </tr>
           </tbody>
         </table>
 

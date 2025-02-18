@@ -9,20 +9,19 @@
 }
 
 .search_form {
-  display: flex;
+  display: flexbox;
+  justify-content: right;
+  text-align: center;
 }
 
-.search_form_group input,
-.search_form_group select {
-  flex: 1; /* 入力フィールドとセレクトボックスを均等に配置 */
+.search_form_groupe {
+  margin-bottom: 20px;
 }
 
-.search_form_group select {
-  margin-left: 10px; /* セレクトボックスの左側にマージンを設定 */
-}
+.s-select {
+  margin-right: 30px;
+  padding-bottom: 14px;
 
-.search_button {
-  width: 100%; /* 検索ボタンを全幅に広げる */
 }
 
 .sidebar {

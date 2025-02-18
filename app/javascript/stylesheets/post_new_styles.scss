@@ -18,21 +18,3 @@
   display: block; /* 縦並びにするためにブロック要素に変更 */
   text-align: left;
 }
-
-.visibility-btn input[type="radio"] {
-  display: none; /* ラジオボタンを非表示に */
-}
-
-.visibility-btn input[type="radio"] + label {
-  display: block; /* チェックボックスを縦に配置 */
-  margin-bottom: 5px; /* 適宜余白を調整 */
-}
-
-.visibility-btn input[type="radio"] + label::before {
-  content: "☐"; /* チェックボックスの代わりの記号を挿入 */
-  margin-right: 5px; /* 適宜間隔を調整 */
-}
-
-.visibility-btn input[type="radio"]:checked + label::before {
-  content: "☑"; /* チェックされた状態の記号を挿入 */
-}

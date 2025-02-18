@@ -3,7 +3,7 @@
     <div class="col-sm-7 mb-8 search_form_groupe">
       <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力してください", size:30;%>
     </div>
-    <div class="col-sm-2 mb-2 search_form_groupe">
+    <div class="col-sm-2 mb-2 search_form_groupe s-select">
     <%= f.collection_select :range, ["ユーザー", "投稿"], :to_s, :humanize, {}, { class: "form-control" } %>    
     </div>
     <div class="col-sm-2 search_form_groupe">
