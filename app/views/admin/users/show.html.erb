@@ -43,7 +43,7 @@
             <td>
               <%= f.submit " 保存 ", class: "btn btn-sm submit-button" %>
             <% if !@user.is_active %>
-              <%= button_to "削除", admin_user_path, method: :delete , class: "btn btn-sm delete-button" %>
+              <%= link_to "削除", admin_user_path, method: :delete , class: "btn btn-sm delete-button" %>
             <% end %>
             </td> 
           </tr>
