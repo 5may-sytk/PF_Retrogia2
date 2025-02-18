@@ -5,14 +5,13 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     @word = params[:word]
   
-    if @range != "User"
+    if @range != "ユーザー"
       @posts = Post.where("title LIKE ?", "%#{@word}%")
       return
     end
 
     if @word.blank?
-      redirect_to root_path
-      return
+      redirect_to public_posts_path
     end
   
     if @word.match(/\A[a-zA-Z0-9]{10}\z/)

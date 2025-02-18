@@ -1,20 +1,18 @@
 class Admin::SearchesController < ApplicationController
 
-
   def search
-    @range = params[:range]
     @word = params[:word]
-  
-    if @range != "User"
-      @posts = Post.where("title LIKE ?", "%#{@word}%")
-      return
+
+    if params[:is_status] == "1"
+      @users = User.where(is_active: false)
+    else
+      redirect_to admin_users_path
     end
 
     if @word.blank?
-      redirect_to root_path
-      return
+      redirect_to admin_users_path
     end
-  
+
     if @word.match(/\A[a-zA-Z0-9]{10}\z/)
       @users = User.where(unique_id: @word)
     else

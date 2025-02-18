@@ -1,6 +1,7 @@
 class Public::PostCommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :reject_guest_user_comment, only: [:create]
+  before_action :is_matching_login_user, only: [:edit, :update]
   
   def create
     @post = Post.find(params[:post_id])
@@ -33,7 +34,7 @@ class Public::PostCommentsController < ApplicationController
       redirect_to public_post_post_comments_path(@post)
     else
       flash.now[:notice] = "コメントの編集に失敗しました"
-      render "index"
+      render "edit"
     end
   end
 
@@ -56,4 +57,13 @@ class Public::PostCommentsController < ApplicationController
       redirect_to public_post_post_comments_path(@post) , notice: 'コメントにはログインが必要です'
     end
   end 
+
+  def is_matching_login_user
+    @post_comment = PostComment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    unless @post_comment.user == current_user
+      redirect_to public_post_post_comments_path(@post)
+    end
+  end
+  
 end

@@ -11,11 +11,7 @@
           <tr>
             <th>公開情報</th>
             <td>
-              <% if @user.is_public? %>
-                <%= "公開" %>
-              <% else %>
-                <%= "非公開" %>
-              <% end %>
+              <%= @user.is_public? ? "公開" : "非公開" %>
             </td>
             <td class="radio-btn-form">
               <%= f.collection_radio_buttons :is_public, [[true, '公開'], [false, '非公開']], :first, :last %>
@@ -24,11 +20,7 @@
           <tr>
             <th>ステータス</th>
             <td>
-              <% if @user.is_active? %>
-                <%= "現行ユーザー" %>
-              <% else %>
-                <%= "退会済み" %>
-              <% end %>
+              <%= @user.is_active? ? "現行ユーザー" : "退会済み" %>
             </td>
             <td class="radio-btn-form">
               <%= f.collection_radio_buttons :is_active, [[true, '継続'], [false, '退会']], :first, :last %>
