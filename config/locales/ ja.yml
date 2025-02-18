@@ -1,7 +1,7 @@
 ja:
   enums:
     post:
-      posts_visibility_range:
+      visibility:
         post_public: "全体公開"
         post_unlisted: "フォロワーのみ公開"
         post_private: "非公開"
