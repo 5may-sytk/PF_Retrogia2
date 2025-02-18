@@ -71,7 +71,12 @@
   <div class="form-group row">
     <label for"visibility", class="col-sm-4 col-form-label">公開範囲</label>
     <div class="col-sm-8 btn visibility-btn">
-      <%= f.collection_radio_buttons :visibility, Post.posts_visibility_ranges_i18n, :first , :last  %>
+      <%= f.radio_button :posts_visibility_ranges, :post_public, checked: true %>
+        <%= f.label :posts_visibility_ranges, Post.posts_visibility_ranges_i18n[:post_public], {value: :post_public} %><br>
+        <%= f.radio_button :posts_visibility_ranges, :post_unlisted %>
+        <%= f.label :posts_visibility_ranges, Post.posts_visibility_ranges_i18n[:post_unlisted], {value: :post_unlisted} %><br>
+        <%= f.radio_button :posts_visibility_ranges, :post_private %>
+        <%= f.label :posts_visibility_ranges, Post.posts_visibility_ranges_i18n[:post_private], {value: :post_private} %>
     </div>
   </div>
 

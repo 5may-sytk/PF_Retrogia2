@@ -7,6 +7,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
 
     if @post.save
@@ -18,7 +19,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(10)
+    
   end
 
   def show
@@ -52,8 +54,8 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, :visited_at,
+    params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, :visited_at,:visibility,
     # :tags, 
-    :visibility, :post_image)
+    :post_image)
   end
 end
