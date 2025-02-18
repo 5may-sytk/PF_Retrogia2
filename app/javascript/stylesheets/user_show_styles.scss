@@ -32,16 +32,14 @@
 }
 
 .user-posts {
-  display: flexbox;
-  flex-wrap: wrap-reverse;
+  margin-left: 50px;
 }
 
 .user-post-image {
-  margin: 10px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.user-post-image:last-child {
-  margin: 0 auto; /* 画像を水平方向に中央に配置 */
-  display: block;
+.user-post-info {
+  margin: 10px;
 }

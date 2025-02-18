@@ -97,14 +97,9 @@
       </div>
 
       <br>
-
+        
       <div class="row back-btn-area">
-        <button class="btn back-button" onclick="goBack()">戻る</button>
-        <script>
-        function goBack() {
-          window.history.back(); // ブラウザの履歴を1つ前に戻る
-        }
-        </script>
+        <%= render 'back', url_path: edit_public_post_url(@post) %>
       </div>
 
     </div>

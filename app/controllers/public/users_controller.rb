@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(10)
     
     return unless @user == current_user 
-    @allow_edit = true
+    @allow = true
   end
 
   def edit

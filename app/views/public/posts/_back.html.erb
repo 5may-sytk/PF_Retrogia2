@@ -1,0 +1,13 @@
+<button class="btn back-button" onclick="goBack()">戻る</button>
+  <script>
+    function goBack() {
+      var previousUrl = document.referrer;
+      var editPageUrl = "<%= url_path %>";
+      
+      if (previousUrl.includes(editPageUrl)) {
+        window.history.go(-3); // ブラウザの履歴を2つ前に戻る
+      } else {
+        window.history.back(); // ブラウザの履歴を1つ前に戻る
+      }
+    }
+  </script>

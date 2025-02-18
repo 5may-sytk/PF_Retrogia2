@@ -39,9 +39,6 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
-      collection do
-        get 'following_feed'
-      end
       resources :post_comments, only: [:index, :edit, :update, :create, :destroy]
       resources :bookmarks, only: [:index, :create, :destroy]
       resources :favorites, only: [:index, :create, :destroy]
