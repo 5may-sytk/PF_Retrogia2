@@ -33,7 +33,7 @@ class Public::PostCommentsController < ApplicationController
       redirect_to public_post_post_comments_path(@post)
     else
       flash.now[:notice] = "コメントの編集に失敗しました"
-      redirect_to public_post_post_comments_path(@post)
+      render "index"
     end
   end
 
