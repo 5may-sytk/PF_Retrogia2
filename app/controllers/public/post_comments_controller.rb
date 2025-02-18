@@ -9,8 +9,9 @@ class Public::PostCommentsController < ApplicationController
     if @post_comment.save
       redirect_to public_post_post_comments_path(@post)
     else
+      @post_comments = @post.post_comments
       flash.now[:notice] = "コメントの投稿に失敗しました"
-      redirect_to public_post_post_comments_path(@post)
+      render "index"
     end
   end
 
@@ -18,27 +19,29 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
-    
   end
 
   def edit
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.find(params[:id])
-    if @Post_comment.update(comment_params)
-      redirect_to public_post_post_comments_path(@post)
-    else
-      flash.now[:notice] = "コメントの編集に失敗しました"
-      redirect_to public_post_post_comments_path(@post)
-    end
   end
 
   def update
+    @post = Post.find(params[:post_id])
+    @post_comment = PostComment.find(params[:id])
+    if @post_comment.update(post_comment_params)
+      redirect_to public_post_post_comments_path(@post)
+    else
+      flash.now[:notice] = "コメントの編集に失敗しました"
+      render "index"
+    end
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
+    redirect_to public_post_post_comments_path(@post)
   end
 
   private
@@ -48,6 +51,7 @@ class Public::PostCommentsController < ApplicationController
 
   def reject_guest_user_comment
     @user = current_user
+    @post = Post.find(params[:post_id])
     if @user.email == "guest@example.com"
       redirect_to public_post_post_comments_path(@post) , notice: 'コメントにはログインが必要です'
     end
