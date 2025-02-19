@@ -75,13 +75,11 @@
               </td>
               <td class="col-1">
               <!-- いいね -->
-              <%= render 'public/favorites/favorite', post: @post %>
+                <%= render 'public/favorites/favorite', post: @post %>
               </td>
               <td class="col-1">
               <!-- ブックマーク -->
-              <%= link_to root_path, class: 'btn post-link' do %>
-                <i class="fa-solid fa-bookmark fa-xl"></i>
-              <% end %>
+                <%= render 'public/favorites/bookmark', post: @post %>
               </td>
               <td class="col-1">
               <!-- マップ -->
