@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post = Post.find(params[:post_id])
@@ -8,7 +9,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = Favorite.all
+    @my_favorite_posts = current_user.favorited_posts
   end
 
   def destroy
@@ -17,4 +18,5 @@ class Public::FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to request.referer
   end
+
 end

@@ -70,13 +70,12 @@
               <!-- コメント -->
               <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
                 <i class="fa-solid fa-comment fa-xl"></i>
+                <%= @post.post_comments.count %> 
               <% end %>
               </td>
               <td class="col-1">
               <!-- いいね -->
-              <%= link_to root_path, class: 'btn post-link' do %>
-                <i class="fa-solid fa-heart fa-xl"></i>
-              <% end %>
+              <%= render 'public/favorites/favorite', post: @post %>
               </td>
               <td class="col-1">
               <!-- ブックマーク -->
