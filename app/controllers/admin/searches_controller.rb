@@ -1,5 +1,4 @@
 class Admin::SearchesController < ApplicationController
-
   def search
     @word = params[:word]
 
