@@ -10,7 +10,7 @@
       <div class="flash">
         <%= flash[:notice] %>
       </div>
-        <%= render 'userinfo', user: @user, allow_edit:@allow_edit, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
+        <%= render 'userinfo', user: @user, allow_edit:@allow, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
       <br>
       <div class="line"></div>
       <br>
@@ -29,7 +29,8 @@
             <% end %>
             <div class="user-post-info">
               <%= post.title %><br>
-              <%= post.visited_at.strftime('%m/%d %H:%M') %>
+              <%= post.visited_at.strftime('%m/%d %H:%M') %><br>
+              <%= post.visibility_i18n %>
             </div>
           <% end %>
 
