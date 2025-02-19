@@ -3,8 +3,8 @@ ja:
     post:
       visibility:
         post_public: "全体公開"
-        post_unlisted: "フォロワーのみ"
-        post_listed: "相互フォロワーのみ"
+        post_unlisted: "部分公開"
+        post_listed: "限定公開"
         post_private: "非公開"
   activerecord:
     models:

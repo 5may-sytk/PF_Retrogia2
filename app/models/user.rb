@@ -26,6 +26,14 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  def favorited_posts
+    self.favorited_posts
+  end
+
+  def bookmarked_posts
+    self.bookmarked_posts
+  end
+
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
