@@ -24,6 +24,8 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(15)
     end
+    
+    @post = Post.new
   end
 
   def show

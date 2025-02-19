@@ -26,10 +26,18 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  def favorited_posts
+    self.favorited_posts
+  end
+
+  def bookmarked_posts
+    self.bookmarked_posts
+  end
+
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  #has_many :bookmarks, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   # フォローしているユーザーとのアクティブなリレーションシップ
   #has_many :active_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
