@@ -10,7 +10,7 @@
 
 .search_form {
   display: flexbox;
-  justify-content: right;
+  justify-content: center;
   text-align: center;
 }
 
@@ -18,10 +18,17 @@
   margin-bottom: 20px;
 }
 
+.s-word {
+  text-align: left;
+}
+
 .s-select {
   margin-right: 30px;
   padding-bottom: 14px;
+}
 
+.s-search {
+  margin-right: 5px;
 }
 
 .sidebar {
