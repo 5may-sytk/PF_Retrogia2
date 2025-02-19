@@ -4,8 +4,8 @@
       <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力してください", size:30;%>
     </div>
     <div class="col-sm-2 a-search_form_groupe">
-      <div style="display: flex; align-items: center; font-size:15px;">
-        <%= check_box_tag('is_status', '1', false) %>
+      <div style="display: flex; align-items: center; font-size:13px;">
+        <%= f.check_box :is_status, { checked: false, style: "margin-right: 5px;" } %>
         <%= label_tag('is_status', '退会検索') %>
       </div>
     </div>
