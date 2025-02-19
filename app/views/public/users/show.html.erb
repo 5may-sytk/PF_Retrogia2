@@ -29,7 +29,8 @@
             <% end %>
             <div class="user-post-info">
               <%= post.title %><br>
-              <%= post.visited_at.strftime('%m/%d %H:%M') %>
+              <%= post.visited_at.strftime('%m/%d %H:%M') %><br>
+              <%= post.visibility_i18n %>
             </div>
           <% end %>
 
