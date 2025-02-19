@@ -10,7 +10,7 @@
       <div class="flash">
         <%= flash[:notice] %>
       </div>
-        <%= render 'userinfo', user: @user, allow_edit:@allow_edit, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
+        <%= render 'userinfo', user: @user, allow_edit:@allow, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
       <br>
       <div class="line"></div>
       <br>

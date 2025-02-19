@@ -7,7 +7,6 @@ class Public::SearchesController < ApplicationController
   
     if @range != "ユーザー"
       @posts = Post.where("title LIKE ?", "%#{@word}%")
-      return
     end
 
     if @word.blank?
