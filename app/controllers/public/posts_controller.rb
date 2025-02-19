@@ -19,8 +19,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(10)
-    
+    if current_user
+      @posts = Post.where(visibility: 0).or(Post.where(user_id: current_user.id)).order(created_at: :desc).page(params[:page]).per(15)
+    else
+      @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(15)
+    end
   end
 
   def show
