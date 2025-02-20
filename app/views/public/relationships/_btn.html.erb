@@ -1,0 +1,7 @@
+<div id="follow_btn_<%= post.id %>">
+  <% if current_user.following?(user) %>
+    <%= link_to 'フォローを外す', public_user_relationships_path(user.id), method: :DELETE, remote: true, class: 'edit-button' %>
+  <% else %>
+    <%= link_to 'フォローする', public_user_relationships_path(user.id), method: :POST, remote: true, class: 'edit-button' %>
+  <% end %>
+</div>
