@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     get "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  namespace :public do
-    get 'favorites/index'
-  end
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy] do
     resources :posts, only: [:show, :destroy] do 
@@ -41,10 +38,12 @@ Rails.application.routes.draw do
 
     resources :posts do
       resources :post_comments, only: [:index, :edit, :update, :create, :destroy]
-      resources :bookmarks, only: [:index, :create, :destroy]
-      resources :favorites, only: [:index, :create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
       get "search" => "searches#search"
+      get 'favorites/favorited'
+      get 'bookmarks/bookmarked'
   end
   
   root to: "homes#top"

@@ -26,11 +26,11 @@
             Follower
           <% end %>
 
-          <%= link_to public_post_favorites_path(current_user.id), class: 'btn side-nav-item' do %>
+          <%= link_to public_favorites_favorited_path(current_user), class: 'btn side-nav-item' do %>
             Favorite
           <% end %>
 
-          <%= link_to public_post_bookmarks_path(current_user.id), class: 'btn side-nav-item' do %>
+          <%= link_to public_bookmarks_bookmarked_path(current_user), class: 'btn side-nav-item' do %>
             Bookmark
           <% end %>
 

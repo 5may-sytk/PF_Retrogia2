@@ -6,10 +6,9 @@ class Public::BookmarksController < ApplicationController
     @post = Post.find(params[:post_id])
     @bookmark = current_user.bookmarks.new(post_id: @post.id)
     @bookmark.save
-    redirect_to request.referer
   end
 
-  def index
+  def bookmarked
     @my_bookmark_posts = current_user.bookmarked_posts
   end
 
@@ -17,7 +16,6 @@ class Public::BookmarksController < ApplicationController
     @post = Post.find(params[:post_id])
     @bookmark = current_user.bookmarks.find_by(post_id: @post.id)
     @bookmark.destroy
-    redirect_to request.referer
   end
 
   def reject_guest_user_bookmark
@@ -25,4 +23,5 @@ class Public::BookmarksController < ApplicationController
     redirect_to public_posts_path, notice: 'ブックマークにはログインが必要です'
     end
   end
+
 end
