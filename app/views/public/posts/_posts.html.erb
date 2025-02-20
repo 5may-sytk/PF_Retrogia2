@@ -36,8 +36,11 @@
     <span class="post-tags">
       
     </span>
-    <span class="post-links">
-    
+    <span class="post-links" id="favorite_btn_<%= post.id %>">
+      <%= render 'public/favorites/favorite', post:post %>
+    </span>
+    <span class="post-links" id="bookmark_btn_<%= post.id %>">
+      <%= render 'public/bookmarks/bookmark', post:post %>
     </span>
   </td>
 </tr>
