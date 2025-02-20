@@ -26,8 +26,10 @@
       <br>
     </span>
     <span class="">
-      <%= link_to public_user_path(post), class: 'btn post-user' do %>
-        <%= post.user.name %>
+      <% if post.user %>
+        <%= link_to public_user_path(post.user), class: 'btn post-user' do %>
+          <%= post.user.name %>
+        <% end %>
       <% end %>
     </span>
     <span>
