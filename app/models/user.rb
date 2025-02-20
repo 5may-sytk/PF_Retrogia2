@@ -27,11 +27,11 @@ class User < ApplicationRecord
   end
 
   def favorited_posts
-    self.favorited_posts
+    self.favorites.includes(:post).map(&:post)
   end
 
   def bookmarked_posts
-    self.bookmarked_posts
+    self.bookmarks.includes(:post).map(&:post)
   end
 
   has_many :posts
