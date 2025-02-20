@@ -35,7 +35,7 @@
                   <%= link_to 'New', new_public_post_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'MyPage', public_user_path(current_user.id), class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Follower', public_user_followings_path(current_user.id), class: 'btn btn-custom', style: 'font-size: 20px;' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
                   <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-custom', style: 'font-size: 20px;' %>

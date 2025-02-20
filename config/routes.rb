@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy] do
     resources :posts, only: [:show, :destroy] do 
-      resources :post_comments, only: [:destroy]
+      resources :post_comments, only: [:index,:destroy]
       end
     end
     get "search" => "searches#search"
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :users, only: [:show, :edit, :update] do
-      resource :relationships, only: [:create, :destroy]
+      resources :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
       collection do
