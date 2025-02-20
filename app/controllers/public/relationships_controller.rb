@@ -3,23 +3,23 @@ class Public::RelationshipsController < ApplicationController
   #before_action :ensure_guest_user, only: [:create]
 
   def create
-    current_user.follow(params[:user_id])
+    user = User.find(params[:user_id])
+    current_user.follow(user)
     redirect_to request.referer
   end
-
+  
   def destroy
-    current_user.unfollow(params[:user_id])
-    redirect_to request.referer
+    user = User.find(params[:user_id])
+    current_user.unfollow(user)
+    redirect_to  request.referer
   end
-
-  # フォローしている人一覧
-  def follower
+  
+  def followings
     user = User.find(params[:user_id])
     @users = user.followings
   end
-
-  # フォローされている人一覧
-  def followed
+  
+  def followers
     user = User.find(params[:user_id])
     @users = user.followers
   end
@@ -27,9 +27,9 @@ class Public::RelationshipsController < ApplicationController
   private
 
   def ensure_guest_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     if @user.email == "guest@example.com"
-      redirect_to request.referer , notice: 'ゲストユーザーからフォローできません。'
+      redirect_to request.referer , notice: 'ゲストユーザーではフォローできません。'
     end
   end 
 end

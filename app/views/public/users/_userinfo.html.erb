@@ -8,14 +8,9 @@
 <div class="row user-info">
   <table class="table table-borderless user-table-edit">
   <tr>
-    <% if allow_edit %>
-      <th></th>
-      <td>
-        <%= link_to btn_path, class: btn_class do %>
-          <%= btn_name %>
-        <% end %>
-      </td>
-    <% end %>
+    <td>
+      <%= render 'public/users/btn',user: user, allow: allow  %>
+    </td>
   </tr>
   </table>
   <table class ="table user-table">
