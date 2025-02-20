@@ -7,6 +7,11 @@ class Public::SearchesController < ApplicationController
   
     if @range != "ユーザー"
       @posts = Post.where("title LIKE ?", "%#{@word}%")
+
+      unless @posts.where.not(visibility: 0).exists?
+        redirect_to public_posts_path
+        return
+      end
     end
   
     if @word.blank?

@@ -4,14 +4,15 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user && @user.id == current_user.id
+  
+    return redirect_to private_user_public_users_path unless @user.is_public? || current_user == @user
+    if current_user == @user
       @posts = @user.posts.where(visibility: 0..3).order(created_at: :desc).page(params[:page]).per(15)
+      @allow = true
     else
       @posts = @user.posts.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(15)
     end
-    
-    return unless @user == current_user 
-    @allow = true
+    render 'show'
   end
 
   def edit
