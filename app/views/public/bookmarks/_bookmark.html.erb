@@ -1,6 +1,6 @@
 <% if post.bookmarked_by?(current_user) %>
   <%= link_to public_post_bookmark_path(post), method: :delete, class: 'btn post-link', remote: true do %>
-    <i class="fa-solid fa-bookmark fa-xl" aria-hidden="true"></i> 
+    <i class="fa-solid fa-bookmark fa-xl" aria-hidden="true" style="color: #3e5bb3;"></i>
   <% end %>
 <% else %>
   <%= link_to public_post_bookmarks_path(post), method: :post, class: 'btn post-link', remote: true do %>

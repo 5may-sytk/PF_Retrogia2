@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row views">
-
+  
     <div class="col-2 sidebar">
       <!-- サイドバー --> 
       <%= render 'public/posts/sidebar' %>
     </div>
 
-    <div class="col-10 favorite-index"> 
-      <h2 class = "title"> Favorite</h2> 
+    <div class="col-10 bookmark-index"> 
+      <h2 class = "title"> Bookmark</h2> 
 
       <table class = "table">
-        <% @my_favorite_posts.each do |post| %>
+        <% @my_bookmark_posts.each do |post| %>
           <tbody>
-            <% post = favorite.post %>
+            <% post = bookmark.post %>
             <%= render partial: 'public/posts/posts', locals: { post: post } %>
           </tbody>
         <% end %>

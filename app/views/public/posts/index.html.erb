@@ -24,49 +24,7 @@
         <table class='table table-hover'>
           <tbody>
             <% @posts.each do |post| %>
-              <tr>
-                <td>
-                  <span class="image">
-                    <% if post.post_image.attached? %>
-                      <%= link_to public_post_path(post), class: 'side-nav-item' do %>
-                        <%= image_tag url_for(post.post_image), size: "250x200" %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to public_post_path(post), class: 'side-nav-item' do %>
-                        <%= image_tag 'noimage.png', size: "250x200" %>
-                      <% end %>
-                    <% end %>
-                  </span>
-                  </td>
-                  <td class="post-info">
-                  <span>
-                    <br>
-                    <br>
-                  </span>
-                  <span class="">
-                    <%= link_to public_post_path(post), class: 'btn post-title' do %>
-                      <%= post.title %><br>
-                    <% end %>
-                  </span>
-                  <span>
-                    <br>
-                  </span>
-                  <span class="">
-                    <%= link_to public_user_path(post.user.id), class: 'btn post-user' do %>
-                      <%= post.user.name %>
-                    <% end %>
-                  </span>
-                  <span>
-                    <br>
-                  </span>
-                  <span class="post-tags">
-                    <%=  %>
-                  </span>
-                  <span class="post-links">
-                  
-                  </span>
-                </td>
-              </tr>
+              <%= render partial: 'posts', locals: { post: post } %>
             <% end %>
           </tbody>
         </table>
