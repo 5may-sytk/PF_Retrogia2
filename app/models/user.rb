@@ -49,4 +49,16 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :user_image
+
+  after_update :update_posts_visibility, if: :is_public_changed_to_false?
+
+  private
+  def is_public_changed_to_false?
+    is_public_before_last_save && !is_public
+  end
+
+  def update_posts_visibility
+    self.posts.update_all(visibility: 3)
+  end
+
 end

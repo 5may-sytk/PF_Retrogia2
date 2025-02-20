@@ -12,7 +12,6 @@
       <table class = "table">
         <% @my_bookmark_posts.each do |post| %>
           <tbody>
-            <% post = bookmark.post %>
             <%= render partial: 'public/posts/posts', locals: { post: post } %>
           </tbody>
         <% end %>

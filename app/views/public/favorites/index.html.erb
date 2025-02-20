@@ -12,7 +12,6 @@
       <table class = "table">
         <% @my_favorite_posts.each do |post| %>
           <tbody>
-            <% post = favorite.post %>
             <%= render partial: 'public/posts/posts', locals: { post: post } %>
           </tbody>
         <% end %>
