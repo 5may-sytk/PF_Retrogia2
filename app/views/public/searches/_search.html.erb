@@ -8,7 +8,9 @@
         <%= f.collection_select :range, ["ユーザー", "投稿"], :to_s, :humanize, { selected: "ユーザー" }, { class: "form-control" } %>    
       </div>
       <div class="col-sm-12 col-md-2 search_form_group s-search">
-        <%= f.submit "Search", class: "btn btn-primary search-button" %>
+      <%= button_tag type: 'submit', class: 'btn btn-primary search-button' do %>
+        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+      <% end %>
       </div>
     </div>
   <% end %>
