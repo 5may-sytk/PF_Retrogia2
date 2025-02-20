@@ -29,7 +29,7 @@ class Public::RelationshipsController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to request.referer , notice: 'ゲストユーザーからフォローできません。'
+      redirect_to request.referer , notice: 'ゲストユーザーではフォローできません。'
     end
   end 
 end
