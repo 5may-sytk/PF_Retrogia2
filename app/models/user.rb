@@ -19,14 +19,14 @@ class User < ApplicationRecord
 
   # フォローしているユーザーとのアクティブなリレーションシップ
   has_many :active_relationships, class_name: "Relationship", 
-                                  foreign_key: "following_id", dependent: :destroy
+                                  foreign_key: "follower_id", dependent: :destroy
   # フォローされているユーザーとのパッシブなリレーションシップ
   has_many :passive_relationships, class_name: "Relationship", 
                                     foreign_key: "followed_id", dependent: :destroy
   # フォローしているユーザーとの関連付け
-  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followings, through: :active_relationships, source: :follower
   # フォローされているユーザーとの関連付け
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followers, through: :passive_relationships, source: :followed
 
   has_one_attached :user_image
 
