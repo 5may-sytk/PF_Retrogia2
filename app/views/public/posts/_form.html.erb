@@ -59,11 +59,9 @@
 
   <!-- タグ入力 --> 
   <div class="form-group row">
-    <label for"visited_at", class="col-sm-4 col-form-label">タグ</label>
+    <label for"tags", class="col-sm-4 col-form-label">タグ</label>
     <div class="col-sm-8">
-      <%
-        #= f.text_field :tags,placeholder:"例: 散歩, 喫茶店, 近所", class:"form-control" 
-      %>
+      <%= f.text_field :image_tags,placeholder:"例: 散歩 喫茶店 近所", class:"form-control" %>
     </div>
   </div>
 

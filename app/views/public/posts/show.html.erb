@@ -8,6 +8,10 @@
 
     <div class="col-9 post-show"> 
     <!-- 投稿詳細 -->
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+    <br>
       <div class="row post-image">
         <div class="post-image-bg">
           <% if @post.post_image.attached? %>
