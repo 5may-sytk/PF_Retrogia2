@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
 
-    input_tags = tag_params[:image_tags].split(" ")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
     @post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
 
     if @post.save
@@ -47,7 +47,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      input_tags = tag_params[:image_tags].split(" ")
+      input_tags = tag_params[:image_tags].split("#")
       @post.update_tags(input_tags)
       redirect_to public_post_path(@post.id)
     else

@@ -62,6 +62,14 @@
               <th class="col-4 info-title">公開範囲</th>
               <td class="col-6"><%= @post.visibility_i18n %></td>
             </tr>
+            <tr>
+              <th class="col-4 info-title">タグ</th>
+              <td class="col-6">
+                <% @post.tags.each do |tag| %>
+                  <%= tag.image_tags %>
+                <% end %>
+              </td>
+            </tr>
           </tbody>
         </table>
 

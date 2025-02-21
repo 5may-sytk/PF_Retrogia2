@@ -9,7 +9,7 @@ class Public::SearchesController < ApplicationController
       @posts = Post.where("title LIKE ?", "%#{@word}%")
 
       unless @posts.where.not(visibility: 0).exists?
-        redirect_to public_posts_path
+        redirect_to public_search_path
         return
       end
     end
@@ -26,7 +26,7 @@ class Public::SearchesController < ApplicationController
     end
   
     if @users.exists?(is_public: false)
-      redirect_to public_posts_path
+      redirect_to public_search_path
       return
     end
   end
