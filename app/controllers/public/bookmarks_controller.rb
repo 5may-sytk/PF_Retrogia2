@@ -9,7 +9,7 @@ class Public::BookmarksController < ApplicationController
   end
 
   def bookmarked
-    @my_bookmark_posts = current_user.bookmarked_posts
+    @my_bookmark_posts = Kaminari.paginate_array(current_user.bookmarked_posts.sort_by { |post| post.favorites.find_by(user_id: current_user.id)&.created_at }.reverse).page(params[:page]).per(5)
   end
 
   def destroy
