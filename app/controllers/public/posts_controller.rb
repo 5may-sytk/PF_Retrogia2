@@ -10,6 +10,9 @@ class Public::PostsController < ApplicationController
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
 
+    input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    @post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
+
     if @post.save
       redirect_to public_posts_path
     else
@@ -44,6 +47,8 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      input_tags = tag_params[:image_tags].split("#")
+      @post.update_tags(input_tags)
       redirect_to public_post_path(@post.id)
     else
       flash.now[:notice] = "編集に失敗しました。"
@@ -59,8 +64,11 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, :visited_at,:visibility,
-    # :tags, 
-    :post_image, :posts_visibility_ranges)
+    params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, 
+                                 :visited_at,:visibility,:post_image, :posts_visibility_ranges)
+  end
+
+  def tag_params # tagに関するストロングパラメータ
+    params.require(:post).permit(:image_tags)
   end
 end

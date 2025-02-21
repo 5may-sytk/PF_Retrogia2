@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.float :latitude #緯度
       t.float :longitude #経度
       t.datetime :visited_at, default: -> { 'CURRENT_TIMESTAMP' } #訪問日時
-      t.string :tags #タグ
+      #t.string :tags #タグ
       t.integer :visibility, default:0 #投稿の公開有無
       t.references :user #Userモデルとのリレーション
       t.timestamps
