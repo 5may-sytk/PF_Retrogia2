@@ -14,11 +14,11 @@ class Post < ApplicationRecord
   validates :visited_at, presence: true
 
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    favorites.exists?(user_id: user&.id)
   end
 
   def bookmarked_by?(user)
-    bookmarks.exists?(user_id: user.id)
+    favorites.exists?(user_id: user&.id)
   end
 
 end
