@@ -18,7 +18,7 @@ class Post < ApplicationRecord
   end
 
   def bookmarked_by?(user)
-    favorites.exists?(user_id: user&.id)
+    bookmarks.exists?(user_id: user&.id)
   end
 
   def create_tags(input_tags)
