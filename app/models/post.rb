@@ -29,7 +29,7 @@ class Post < ApplicationRecord
   end
 
   def update_tags(input_tags)
-    registered_tags = tags.pluck(:image_tags) # すでに紐付けられているタグを配列化する
+    registered_tags = tags.pluck(:image_tags) # すでに紐付けられているタグを配列化
     new_tags = input_tags - registered_tags # 追加されたタグ
     destroy_tags = registered_tags - input_tags # 削除されたタグ
   
