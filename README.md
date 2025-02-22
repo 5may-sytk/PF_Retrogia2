@@ -28,5 +28,9 @@
 - IDE：Cloud9
 ​
 ## 使用素材
+- フリー素材ぱくたそ［ https://www.pakutaso.com ]
+- えんぴつ素材 [ https://enpitsu-sozai.com/ ]
+- いらすとや  [ https://www.irasutoya.com/ ]
+
 著作権を考慮し、架空のデータを扱う予定です。
 なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
