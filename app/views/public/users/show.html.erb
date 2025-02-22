@@ -10,7 +10,7 @@
       <div class="flash">
         <%= flash[:notice] %>
       </div>
-        <%= render 'userinfo', user: @user, allow_edit:@allow, btn_name:"User Edit", btn_path:edit_public_user_path(@user), btn_class:'edit-button'  %>
+        <%= render 'userinfo', user: @user, allow:@allow  %>
       <br>
       <div class="line"></div>
       <br>
@@ -33,12 +33,15 @@
               <%= post.visibility_i18n %>
             </div>
           <% end %>
-
         </div>
       </div>
       <br>
+      <br>
       <div class="row back-btn-area">
         <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
+        <%= link_to public_album_path, class: 'btn' do %>
+          <i class="fa-regular fa-images fa-2xl"></i>
+        <% end %>
       </div>
     </div>
   </div>

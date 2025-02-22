@@ -8,14 +8,15 @@
 <div class="row user-info">
   <table class="table table-borderless user-table-edit">
   <tr>
-    <% if allow_edit %>
-      <th></th>
-      <td>
-        <%= link_to btn_path, class: btn_class do %>
-          <%= btn_name %>
+    <td>
+      <% if allow %>   
+        <%= link_to edit_public_user_path(user), class: 'edit-button' do %>
+          <%= "User Edit" %>
         <% end %>
-      </td>
-    <% end %>
+      <% else %>
+        <%= render 'public/relationships/btn',user: user  %>
+      <% end %>
+    </td>
   </tr>
   </table>
   <table class ="table user-table">
@@ -42,6 +43,29 @@
         <%= user.unique_id %>
       </td>
       <td></td>
+    </tr>
+    <tr>
+      <td><% %></td>
+      <td colspan="5"></td>
+      <td><% %></td>
+    </tr>
+    <tr>
+      <th>フォロー数</th>
+      <td colspan="5"></td>
+      <th>フォロワー数</th>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to public_user_followings_path(current_user.id), class: 'btn' do %>
+          <%= user.followings.count %>
+        <% end %>
+      </td>
+      <td colspan="5"></td>
+      <td>
+        <%= link_to public_user_followers_path(current_user.id), class: 'btn' do %>
+          <%= user.followers.count %>
+        <% end %>
+      </td>
     </tr>
   </table>
 </div>

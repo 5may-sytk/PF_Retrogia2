@@ -8,6 +8,10 @@
 
     <div class="col-9 post-show"> 
     <!-- 投稿詳細 -->
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+    <br>
       <div class="row post-image">
         <div class="post-image-bg">
           <% if @post.post_image.attached? %>
@@ -57,6 +61,14 @@
             <tr>
               <th class="col-4 info-title">公開範囲</th>
               <td class="col-6"><%= @post.visibility_i18n %></td>
+            </tr>
+            <tr>
+              <th class="col-4 info-title">タグ</th>
+              <td class="col-6">
+                <% @post.tags.each do |tag| %>
+                  <%= tag.image_tags %>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>

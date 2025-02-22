@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :users, only: [:show, :edit, :update] do
-      resources :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
       collection do
@@ -40,10 +40,12 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:index, :edit, :update, :create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+
     end
       get "search" => "searches#search"
       get 'favorites/favorited'
       get 'bookmarks/bookmarked'
+      get "album" => "posts#album"
   end
   
   root to: "homes#top"

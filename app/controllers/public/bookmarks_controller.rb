@@ -20,7 +20,7 @@ class Public::BookmarksController < ApplicationController
 
   def reject_guest_user_bookmark
     if current_user.email == "guest@example.com"
-    redirect_to public_posts_path, notice: 'ブックマークにはログインが必要です'
+    redirect_to request.referer, notice: 'ブックマークにはログインが必要です'
     end
   end
 
