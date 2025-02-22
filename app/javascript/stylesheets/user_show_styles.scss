@@ -47,6 +47,9 @@
 .user-album {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+}
 
+.albums {
+  display: flex;
+  flex-wrap: wrap;
 }

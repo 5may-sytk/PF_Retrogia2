@@ -6,13 +6,13 @@
       <%= render 'public/posts/sidebar' %>
     </div>
 
-    <div class="col-10 follower-index"> 
+    <div class="col-10 album-index"> 
       <h2 class = "title">投稿一覧</h2> 
 
-      <div class="row user-album">
+      <div class="row">
         <table class="table user-album">
           <% @posts.each do |post| %>
-            <tr>
+            <tr class="albums">
               <td>
                 <% if post.post_image.attached? %>
                   <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
