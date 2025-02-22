@@ -7,10 +7,10 @@ class Public::UsersController < ApplicationController
   
     return redirect_to private_user_public_users_path unless @user.is_public? || current_user == @user
     if current_user == @user
-      @posts = @user.posts.where(visibility: 0..3).order(created_at: :desc).page(params[:page]).per(4)
+      @posts = @user.posts.where(visibility: 0..3).order(created_at: :desc).page(params[:page]).per(3)
       @allow = true
     else
-      @posts = @user.posts.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(4)
+      @posts = @user.posts.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(3)
     end
     render 'show'
   end

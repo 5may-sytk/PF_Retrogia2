@@ -1,0 +1,28 @@
+.pagination{
+  width: fit-content;
+  margin: 25px auto;
+  font-size: 0.8rem;
+  line-height: 2rem;
+}
+
+.first a,
+.prev a,
+.page a,
+.next a,
+.last a{
+  color: #622d18;
+  font-size: medium;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+}
+
+
+span.current{
+  background-color: rgba(84, 145, 127, 0.4);
+  color: #622d18;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: large;
+  border-radius: 50px;/* 四隅を丸くする */
+}
