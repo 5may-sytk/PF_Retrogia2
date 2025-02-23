@@ -79,25 +79,25 @@
             <tr>
               <td class="col-3"></td>
               <td class="col-1">
-              <!-- コメント -->
-              <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
-                <i class="fa-solid fa-comment fa-xl"></i>
-                <%= @post.post_comments.count %> 
-              <% end %>
+                <!-- コメント -->
+                <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
+                  <i class="fa-solid fa-comment fa-xl"></i>
+                  <%= @post.post_comments.count %> 
+                <% end %>
               </td>
               <td class="col-1" id="favorite_btn_<%= @post.id %>">
-              <!-- いいね -->
-                <%= render 'public/favorites/favorite', post: @post %>
+                <!-- いいね -->
+                  <%= render 'public/favorites/favorite', post: @post %>
               </td>
               <td class="col-1" id="bookmark_btn_<%= @post.id %>">
-              <!-- ブックマーク -->
-                <%= render 'public/bookmarks/bookmark', post: @post %>
+                <!-- ブックマーク -->
+                  <%= render 'public/bookmarks/bookmark', post: @post %>
               </td>
               <td class="col-1">
-              <!-- マップ -->
-              <%= link_to root_path, class: 'btn post-link' do %>
-                <i class="fa-solid fa-location-dot fa-xl"></i>
-              <% end %>
+                <!-- マップ -->
+                <%= link_to public_post_map_path(@post), class: 'btn post-link' do %>
+                  <i class="fa-solid fa-location-dot fa-xl"></i>
+                <% end %>
               </td>
               <td class="col-3"></td>
             </tr>
@@ -110,8 +110,6 @@
       <div class="row back-btn-area">
         <%= render 'back', url_path: edit_public_post_url(@post) %>
       </div>
-
-    </div>
 
   </div>
 </div>

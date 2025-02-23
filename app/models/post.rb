@@ -12,6 +12,10 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :visited_at, presence: true
+  #validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode
 
   def favorited_by?(user)
     favorites.exists?(user_id: user&.id)

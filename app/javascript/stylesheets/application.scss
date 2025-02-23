@@ -12,3 +12,8 @@
 @import './user_show_styles';
 @import './admin_u_index';
 @import './admin_u_show';
+
+#map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}
