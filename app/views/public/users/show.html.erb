@@ -39,7 +39,7 @@
       <br>
       <div class="row back-btn-area">
         <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
-        <%= link_to public_album_path, class: 'btn' do %>
+        <%= link_to public_user_album_path(@user), class: 'btn' do %>
           <i class="fa-regular fa-images fa-2xl"></i>
         <% end %>
       </div>

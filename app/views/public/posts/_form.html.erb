@@ -61,7 +61,7 @@
   <div class="form-group row">
     <label for"image_tags", class="col-sm-4 col-form-label">タグ (10文字以内)</label>
     <div class="col-sm-8">
-      <%= f.text_field :image_tags,placeholder:"例: 散歩 喫茶店 近所", class:"form-control" ,maxlength: 10 %>
+      <%= f.text_field :image_tags, value: post.present? ? post.tags.map(&:image_tags).join(' ') : '', placeholder:"例: 散歩 喫茶店 近所", class:"form-control" ,maxlength: 13 %>
       <%= javascript_pack_tag 'addhashtag' %> <!-- タグに＃を自動付与するjavascriptを読み込む -->
     </div>
   </div>
@@ -72,10 +72,6 @@
     <div class="col-sm-8 btn visibility-btn">
       <%= f.radio_button :visibility, :post_public, checked: true %>
         <%= f.label :visibility, Post.visibilities_i18n[:post_public], {value: :post_public} %><br>
-        <%= f.radio_button :visibility, :post_unlisted %>
-        <%= f.label :visibility, Post.visibilities_i18n[:post_unlisted], {value: :post_unlisted} %><br>
-        <%= f.radio_button :visibility, :post_listed %>
-        <%= f.label :visibility, Post.visibilities_i18n[:post_listed], {value: :post_listed} %><br>
         <%= f.radio_button :visibility, :post_private %>
         <%= f.label :visibility, Post.visibilities_i18n[:post_private], {value: :post_private} %>
     </div>

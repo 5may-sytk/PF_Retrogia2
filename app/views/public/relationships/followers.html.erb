@@ -1,2 +1,15 @@
-<h1>Public::Relationships#followers</h1>
-<p>Find me in app/views/public/relationships/followers.html.erb</p>
+<div class="container">
+  <div class="row views">
+  
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %>
+    </div>
+
+    <div class="col-10 follower-index"> 
+      <h2 class = "title"> フォローされているユーザー</h2> 
+      <h5 class = "title"> <%= @users.count %>人にフォローされています</h5>
+      <%= render 'follow_user',users:@users %>
+    </div>
+  </div>
+</div>

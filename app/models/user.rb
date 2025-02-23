@@ -24,9 +24,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", 
                                     foreign_key: "followed_id", dependent: :destroy
   # フォローしているユーザーとの関連付け
-  has_many :followings, through: :active_relationships, source: :follower
+  has_many :followings, through: :active_relationships, source: :followed
   # フォローされているユーザーとの関連付け
-  has_many :followers, through: :passive_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :user_image
 

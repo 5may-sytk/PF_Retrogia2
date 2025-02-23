@@ -7,7 +7,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def favorited
-    @my_favorite_posts = current_user.favorited_posts
+    @my_favorite_posts = current_user.favorited_posts.sort_by { |post| post.favorites.find_by(user_id: current_user.id).created_at }.reverse.take(5)
   end
 
   def destroy

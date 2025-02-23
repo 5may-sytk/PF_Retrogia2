@@ -18,11 +18,11 @@ class Post < ApplicationRecord
   after_validation :geocode
 
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    favorites.exists?(user_id: user&.id)
   end
 
   def bookmarked_by?(user)
-    bookmarks.exists?(user_id: user.id)
+    bookmarks.exists?(user_id: user&.id)
   end
 
   def create_tags(input_tags)
@@ -33,7 +33,7 @@ class Post < ApplicationRecord
   end
 
   def update_tags(input_tags)
-    registered_tags = tags.pluck(:image_tags) # すでに紐付けられているタグを配列化する
+    registered_tags = tags.pluck(:image_tags) # すでに紐付けられているタグを配列化
     new_tags = input_tags - registered_tags # 追加されたタグ
     destroy_tags = registered_tags - input_tags # 削除されたタグ
   

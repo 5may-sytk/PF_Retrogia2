@@ -5,7 +5,7 @@
         <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力してください", size: 25 %>
       </div>
       <div class="col-sm-12 col-md-3 mb-3 search_form_group s-select">
-        <%= f.collection_select :range, ["ユーザー", "投稿"], :to_s, :humanize, { selected: "ユーザー" }, { class: "form-control" } %>    
+        <%= f.collection_select :range, ["投稿", "タグ", "ユーザー"], :to_s, :humanize, { selected: "ユーザー" }, { class: "form-control" } %>    
       </div>
       <div class="col-sm-12 col-md-2 search_form_group s-search">
       <%= button_tag type: 'submit', class: 'btn btn-primary search-button' do %>

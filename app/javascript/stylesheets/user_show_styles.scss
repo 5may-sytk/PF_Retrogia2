@@ -43,3 +43,13 @@
 .user-post-info {
   margin: 10px;
 }
+
+.user-album {
+  display: flex;
+  justify-content: center;
+}
+
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -55,16 +55,12 @@
       <th>フォロワー数</th>
     </tr>
     <tr>
-      <td>
-        <%= link_to public_user_followings_path(current_user.id), class: 'btn' do %>
-          <%= user.followings.count %>
-        <% end %>
+      <td id="followed_counter">
+        <%= render 'public/relationships/followed_counter', user:user %>
       </td>
       <td colspan="5"></td>
-      <td>
-        <%= link_to public_user_followers_path(current_user.id), class: 'btn' do %>
-          <%= user.followers.count %>
-        <% end %>
+      <td id="follower_counter">
+        <%= render 'public/relationships/follower_counter', user:user %>
       </td>
     </tr>
   </table>

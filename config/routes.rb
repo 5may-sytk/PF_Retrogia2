@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         get 'confirmation'
         patch 'leave'
       end
+      get "album" => "users#album"
     end
 
     resources :posts do
@@ -45,7 +46,6 @@ Rails.application.routes.draw do
       get "search" => "searches#search"
       get 'favorites/favorited'
       get 'bookmarks/bookmarked'
-      get "album" => "posts#album"
   end
   
   root to: "homes#top"

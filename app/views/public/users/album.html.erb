@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row views">
+  
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %>
+    </div>
+
+    <div class="col-10 album-index"> 
+      <h2 class = "title">投稿一覧</h2> 
+
+      <div class="row">
+        <table class="table user-album">
+          <% @posts.each do |post| %>
+            <tr class="albums">
+              <td>
+                <% if post.post_image.attached? %>
+                  <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                    <%= image_tag url_for(post.post_image), size: "150x100" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                    <%= image_tag 'noimage.png', size: "150x100" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td></td>
+              <td>
+                <span class="user-post-info">
+                  <%= post.title %><br>
+                  <%= post.visited_at.strftime('%m/%d %H:%M') %><br>
+                  <%= post.visibility_i18n %>
+                  <% post.tags.each do |tag| %>
+                    <%= tag.image_tags %>
+                  <% end %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        
+      </div>
+      <br>
+      <br>
+      <div class="row back-btn-area">
+        <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>
