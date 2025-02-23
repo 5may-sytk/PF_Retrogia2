@@ -72,10 +72,6 @@
     <div class="col-sm-8 btn visibility-btn">
       <%= f.radio_button :visibility, :post_public, checked: true %>
         <%= f.label :visibility, Post.visibilities_i18n[:post_public], {value: :post_public} %><br>
-        <%= f.radio_button :visibility, :post_unlisted %>
-        <%= f.label :visibility, Post.visibilities_i18n[:post_unlisted], {value: :post_unlisted} %><br>
-        <%= f.radio_button :visibility, :post_listed %>
-        <%= f.label :visibility, Post.visibilities_i18n[:post_listed], {value: :post_listed} %><br>
         <%= f.radio_button :visibility, :post_private %>
         <%= f.label :visibility, Post.visibilities_i18n[:post_private], {value: :post_private} %>
     </div>
