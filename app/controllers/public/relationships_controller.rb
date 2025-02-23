@@ -1,6 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :ensure_guest_user, only: [:create]
+  before_action :ensure_guest_user, only: [:create]
 
   def create
     @user = User.find(params[:user_id])
