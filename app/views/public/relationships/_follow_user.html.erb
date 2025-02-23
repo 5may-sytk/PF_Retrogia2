@@ -1,0 +1,35 @@
+<table class='table table-hover following'>
+  <thead>
+    <th></th>
+    <th>名前</th>
+    <th>ユーザーID</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr class="follower-info">
+        <td>
+          <%= link_to public_user_path(user.id), class: 'btn post-user' do %>
+            <% if user.user_image.attached? %>
+              <%= image_tag url_for(user.user_image), size: "100x70" %>
+            <% else %>
+              <%= image_tag 'icon/camera.logo2.png', size: "100x70" %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <br>
+          <%= user.name %>
+        </td>
+        <td>
+          <br>
+          <%= user.unique_id %>
+        </td>
+        <td class="follow-btn-area">
+          <br>
+          <%= render 'public/relationships/btn',user: user  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
