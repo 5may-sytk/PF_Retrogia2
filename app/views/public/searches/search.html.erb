@@ -54,6 +54,13 @@
                       <%= post.title %>
                     <% end %>
                   </td>
+                  <td>
+                    <span class="post-tags">
+                      <% post.tags.each do |tag| %>
+                        <%= tag.image_tags %>
+                      <% end %>
+                    </span>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

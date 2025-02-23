@@ -13,27 +13,30 @@ class Public::SearchesController < ApplicationController
     if @range == "投稿"
       @posts = Post.where("title LIKE ?", "%#{@word}%")
 
-      unless @posts.where.not(visibility: 0).exists?
+      if @users.exists?(is_public: false)
         redirect_to public_search_path
         return
       end
     end
 
-    if @word.match(/\A[a-zA-Z0-9]{10}\z/)
-      @users = User.where(unique_id: @word)
-    else
-      @users = User.where("name LIKE ?", "%#{@word}%")
-    end
-
-    if @users.exists?(is_public: false)
-      redirect_to public_search_path
-      return
+    if @range == "ユーザー"
+      if @word.match(/\A[a-zA-Z0-9]{10}\z/)
+        @users = User.where(unique_id: @word)
+      else
+        @users = User.where("name LIKE ?", "%#{@word}%")
+      end
+  
+      if @users.exists?(is_public: false)
+        redirect_to public_search_path
+        return
+      end
     end
 
     if @range == "タグ"
-      @posts = Tag.joins(:post_tags).joins(:posts).where("image_tags LIKE ?", "%#{@word}%")
-    
-      unless @posts.where.not(posts: { visibility: 0 }).exists?
+      #@posts = Post.joins(:post_tags).joins(:tags).where(tags: {"image_tags LIKE ?" => "%#{@word}%"})
+      @posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%")
+      
+      unless @posts.exists?
         redirect_to public_search_path
         return
       end
