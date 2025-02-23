@@ -14,6 +14,9 @@ import "bootstrap";
 import "../stylesheets/application"; 
 import "../stylesheets/custom_styles";
 
+import "./setCurrentTime"; 
+import "./getLocation"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

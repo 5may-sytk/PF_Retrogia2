@@ -29,6 +29,10 @@
     <label for"address", class="col-sm-4 col-form-label">行った場所（住所）</label>
     <div class="col-sm-8">
       <%= f.text_field :address,placeholder:"レトロジア", class:"form-control" %>
+      <div class="row time-form" >
+      <button type="button" class="btn now--button" id="get-location-btn">周辺住所を表示</button>
+      
+      </div>
     </div>
   </div>
 
@@ -39,21 +43,10 @@
       <%= f.datetime_field :visited_at, class:"form-control", id:"timeInput" %>
 
       <div class="row time-form" >
-        <button type="button" class="btn now--button" onclick="setCurrentTime()">現在時刻を設定</button>
-        <script>
-          function setCurrentTime() {
-            // 現在のローカル時間を取得
-            var now = new Date();
-            // 日本時間に変換
-            var jpTime = new Date(now.getTime() + (9*60*60*1000)); // UTCと日本時間の時差を加える
-            // 日本時間のフォーマットに変換
-            var jpTimeFormatted = jpTime.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MMまでのフォーマット
-            // 入力フォームに現在時刻を設定
-            document.getElementById("timeInput").value = jpTimeFormatted;
-          }
-        </script>
+        <button id="currentTimeButton" type="button" class="btn now--button" onclick="setCurrentTime()">現在時刻を設定</button>
+        
       </div>
-      
+
     </div>
   </div>
 
