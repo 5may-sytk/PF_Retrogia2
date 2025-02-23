@@ -9,20 +9,21 @@
     <div class="col-9 searched-content"> 
       <!-- 検索結果画面 -->
       <h2 class = "title"> Results Search</h2> 
-      <div class="row results">
+      <div class="row ">
         <table class="table table-hover table-inverse">
           <% if @range == "ユーザー" %>
             <tbody>
               <% @users.each do |user| %>
-                <tr>
+                <tr class="results">
+                  <td></td>
                   <td>
                     <% if user.user_image.attached? %>
                       <%= link_to public_user_path(user.id), class: 'post-user' do %>
-                        <%= image_tag url_for(user.user_image), size: "175x150" %>
+                        <%= image_tag url_for(user.user_image), size: "150x125" %>
                       <% end %>
                     <% else %>
                       <%= link_to public_user_path(user.id), class: 'post-user' do %>
-                        <%= image_tag 'icon/camera.logo2.png', size: "175x150" %>
+                        <%= image_tag 'icon/camera.logo2.png', size: "150x125" %>
                       <% end %>
                     <% end %>
                   </td>
@@ -36,15 +37,15 @@
           <% else %>
             <tbody>
               <% @posts.each do |post| %>
-                <tr>
+                <tr class="results">
                   <td>
                     <% if post.post_image.attached? %>
                       <%= link_to public_post_path(post), class: 's-post-image' do %>
-                        <%= image_tag url_for(post.post_image), size: "175x150" %>
+                        <%= image_tag url_for(post.post_image), size: "150x125" %>
                       <% end %>
                     <% else %>
                       <%= link_to public_post_path(post), class: 's-post-image' do %>
-                        <%= image_tag 'noimage.png', size: "175x150" %>
+                        <%= image_tag 'noimage.png', size: "150x125" %>
                       <% end %>
                     <% end %>
                   </td>

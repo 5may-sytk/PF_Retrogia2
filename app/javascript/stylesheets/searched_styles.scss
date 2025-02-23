@@ -55,3 +55,9 @@
   list-style-type: none; /* リストの先頭のマーカー（ドット）を非表示にする */
   padding-left: 0; /* リストの左側の余白をゼロにする */
 }
+
+.results {
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+}
