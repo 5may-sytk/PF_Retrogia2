@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row views">
+  
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %>
+    </div>
+
+    <div class="col-10 map-view"> 
+    <h2 class = "title"> Map</h2> 
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

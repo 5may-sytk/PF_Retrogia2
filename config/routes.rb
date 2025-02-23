@@ -41,12 +41,14 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:index, :edit, :update, :create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resource :map, only: [:show]
 
     end
       get "search" => "searches#search"
       get 'favorites/favorited'
       get 'bookmarks/bookmarked'
   end
+
   
   root to: "homes#top"
   get 'home/about' => 'homes#about', as:'about'
