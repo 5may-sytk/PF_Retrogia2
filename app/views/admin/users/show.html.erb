@@ -2,7 +2,45 @@
 	<div class="row a-views">
     <!-- ユーザー詳細 -->
     <div class="col a-user-info">
-      <%= render 'public/users/userinfo', user: @user, allow:@allow %>
+      <div class="row user_image">
+        <% if @user.user_image.attached? %>
+          <%= image_tag url_for(@user.user_image), size: "250x200" %>
+        <% else %>
+          <%= image_tag 'icon/camera.logo2.png', size: "250x200" %>
+        <% end %>
+      </div>
+      <table class ="table user-table">
+        <tr>
+          <th>User Nmae</th>
+          <td colspan="5"></td>
+          <td>
+            <%= @user.name %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Introduction</th>
+          <td colspan="5"></td>
+          <td>
+            <%= @user.introduction %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>User ID</th>
+          <td colspan="5"></td>
+          <td>
+            <%= @user.unique_id %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><% %></td>
+          <td colspan="5"></td>
+          <td><% %></td>
+        </tr>
+      </table>
+    </div>
       <div class="col-12 line"></div>
 
       <div class="col-8 a-user-status">
