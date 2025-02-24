@@ -1,0 +1,75 @@
+<div class="container">
+	<div class="row a-views">
+    <!-- ユーザー投稿一覧 -->
+    <div class="col a-user-info">
+      <h2 class="title">User Posts</h2>
+      <h5 class = "title"> <%= @posts.total_count %>件投稿</h5>
+      <div class="row ">
+        <table class="table table-hover a-user_posts">
+          <thead>
+            <tr>
+              <th></th>
+              <th>タイトル</th>
+              <th>詳細</th>
+              <th>タグ</th>
+              <th>公開範囲</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td>
+                  <span class="a-image">
+                    <% if post.post_image.attached? %>
+                      <%= image_tag url_for(post.post_image),size: "100x70" %>
+                    <% else %>
+                      <%= image_tag 'noimage.png', size: "100x70" %>
+                    <% end %>
+                  </span>
+                </td>
+                <td class="post-info">
+                  <span>
+                    <%= post.title %>
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    <%= post.contents %>
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    <% post.tags.each do |tag| %>
+                      <%= tag.image_tags %>
+                    <% end %>
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    <%= post.visibility_i18n %>
+                  </span>
+                </td>
+                <td class="post-btn-area">
+                  <%= link_to edit_admin_user_post_path(user_id: @user.id, id: post.id), class: 'btn post-btn' do %>
+                    Edit
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="pager-area">
+        <%= paginate @posts %>
+      </div>
+      
+      <div class="row back-btn-area">
+        <%= link_to admin_user_path(@user.id), class:"btn back-button" do %>
+          戻る
+        <% end %>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
