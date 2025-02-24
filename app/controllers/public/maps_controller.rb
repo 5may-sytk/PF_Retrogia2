@@ -1,5 +1,7 @@
 class Public::MapsController < ApplicationController
   def show
-    @posts = Post.select(:latitude, :longitude, :title)
+    @post = Post.find_by(id:params[:post_id])
+    gon.latitude = @post.latitude
+    gon.longitude = @post.longitude
   end
 end
