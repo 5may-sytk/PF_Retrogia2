@@ -8,7 +8,7 @@
 
     <div class="col-10 follower-index"> 
       <h2 class = "title"> フォローされているユーザー</h2> 
-      <h5 class = "title"> <%= @users.count %>人にフォローされています</h5>
+      <h5 class = "title"> <%= @users.total_count %>人にフォローされています</h5>
       <%= render 'follow_user',users:@users %>
     </div>
   </div>

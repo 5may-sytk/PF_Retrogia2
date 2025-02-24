@@ -47,6 +47,15 @@
       <%= form_with(model: @user, url: admin_user_path(@user.id), local: true) do |f| %>
         <table class="table ">
           <tr>
+            <th>投稿一覧</th>
+            <td></td>
+            <td class="post-btn-area">
+              <%= link_to admin_user_posts_path(@user.id), class: 'btn post-btn' do %>
+                Posts
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <th>公開情報</th>
             <td>
               <%= @user.is_public? ? "公開" : "非公開" %>
@@ -72,9 +81,12 @@
           <tr >
             <th></th>
             <td class="row submit-btn-area">
-              <%= f.submit " 保存 ", class: "btn btn-sm submit-button" %>
+              <%= f.submit " 保存 ", class: "btn btn-sm edit-button" %>
             <% if !@user.is_active %>
               <%= link_to "削除", admin_user_path, method: :delete , class: "btn btn-sm delete-button" %>
+            <% end %>
+            <%= link_to admin_users_path, class:"btn back-button" do %>
+              戻る
             <% end %>
             </td> 
           </tr>

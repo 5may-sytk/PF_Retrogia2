@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  namespace :admin do
+    get 'post_comments/index'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
     passwords:     'admin/passwords',
@@ -17,9 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy] do
-    resources :posts, only: [:show, :destroy] do 
-      resources :post_comments, only: [:index,:destroy]
-      end
+    resources :posts, only: [:index, :edit, :update, :destroy]  
     end
     get "search" => "searches#search"
   end

@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row a-views">
+    <!-- ユーザー投稿一覧 -->
+    <div class="col a-user-info">
+      <h2 class="title">Edit</h2>
+      <div class="a-post-edit">
+      <!-- 公開設定 --> 
+        <%= form_with(model: [@user, @post], url: admin_user_post_path(@user, @post), method: :patch) do |f| %>
+          <div class="form-group row">
+            <label for"visibility", class="col-sm-4 col-form-label">公開範囲</label>
+            <div class="col-sm-8 btn visibility-btn">
+              <%= f.radio_button :visibility, :post_public, checked: true %>
+                <%= f.label :visibility, Post.visibilities_i18n[:post_public], {value: :post_public} %><br>
+                <%= f.radio_button :visibility, :post_private %>
+                <%= f.label :visibility, Post.visibilities_i18n[:post_private], {value: :post_private} %>
+            </div>
+          </div>
+        
+          <!-- 投稿ボタン --> 
+          <div class="form-group row justify-content-center">
+            <%= f.submit "編集", class: "btn btn-sm edit-button" %>
+            <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete , class: "btn btn-sm delete-button" %>
+            <%= link_to admin_user_posts_path(@user.id), class:"btn back-button" do %>
+              戻る
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
