@@ -8,8 +8,9 @@
 
     <div class="col-10 map-view"> 
     <h2 class = "title"> Map</h2> 
+      <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
       <div id="map"></div>
     </div>
   </div>
 </div>
-<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<%= tag.div id:"post-data", data: { post: @posts.to_json} %>
