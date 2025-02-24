@@ -16,6 +16,8 @@ import "../stylesheets/custom_styles";
 
 import "./setCurrentTime"; 
 import "./getLocation"
+import "./map"
+import "./marker"
 
 Rails.start()
 Turbolinks.start()
