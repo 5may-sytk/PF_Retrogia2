@@ -2,7 +2,8 @@ class Admin::PostsController < ApplicationController
   def index
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @posts = @user.posts.page(params[:page])
+      @posts = @user.posts.page(params[:page]).per(1)
+      @posts_total_count = @posts.count
     end
   end
 
