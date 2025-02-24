@@ -12,9 +12,21 @@ class Admin::PostsController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find_by(id: params[:post_id])
+    if @post.update(post_params)
+      redirect_to admin_user_posts_path(@user)
+    else
+      flash.now[:notice] = "更新に失敗しました。"
+      render :index
+    end
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts
+    @post.destroy
+    redirect_to admin_user_posts_path(@user)
   end
 
   private
