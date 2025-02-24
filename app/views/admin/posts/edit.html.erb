@@ -5,7 +5,7 @@
       <h2 class="title">Edit</h2>
       <div class="a-post-edit">
       <!-- 公開設定 --> 
-        <%= form_with(model: [@user, @post], url: admin_user_post_path(@user, @post), method: :patch) do |f| %>
+        <%= form_with(model: [@user, @post], url: admin_user_post_path(@user.id, @post.id), method: :patch) do |f| %>
           <div class="form-group row">
             <label for"visibility", class="col-sm-4 col-form-label">公開範囲</label>
             <div class="col-sm-8 btn visibility-btn">
