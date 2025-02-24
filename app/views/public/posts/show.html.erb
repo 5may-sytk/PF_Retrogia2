@@ -7,115 +7,115 @@
     </div>
 
     <div class="col-9 post-show"> 
-    <!-- 投稿詳細 -->
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-    <br>
-      <div class="row post-image">
-        <div class="post-image-bg">
-          <% if @post.post_image.attached? %>
-            <%= image_tag url_for(@post.post_image), size: "300x250" %>
-          <% else %>
-            <%= image_tag 'noimage.png', size: "300x250" %>
-          <% end %>
-        </div>
+      <!-- 投稿詳細 -->
+      <div class="flash">
+        <%= flash[:notice] %>
       </div>
-
       <br>
-      <% if @user == current_user %>
-      <span class="row btn-area">
-        <%= button_to "Edit", edit_public_post_path(@post), method: :get , class: "edit-button" %>
-        <%= button_to "Delete", public_post_path(@post), method: :delete , class: "delete-button" %>
-      </span>
-      <% end %>
-      <br>
+        <div class="row post-image">
+          <div class="post-image-bg">
+            <% if @post.post_image.attached? %>
+              <%= image_tag url_for(@post.post_image), size: "300x250" %>
+            <% else %>
+              <%= image_tag 'noimage.png', size: "300x250" %>
+            <% end %>
+          </div>
+        </div>
 
-      <div class="row info">
-        <table class="table post-info">
-          <tbody>
-            <tr>
-              <th  class="col-4 info-title">タイトル</th>
-              <td class="col-6"> <%= @post.title %></td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">ユーザー名</th>
-              <td class="col-6 info-name">
-                <%= link_to public_user_path(@user.id), class: 'btn post-user' do %>
-                  <%= @post.user.name %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">詳細</th>
-              <td class="col-6"><%= @post.contents %></td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">場所</th>
-              <td class="col-6"><%= @post.address %></td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">訪問日</th>
-              <td class="col-6"><%= @post.visited_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">公開範囲</th>
-              <td class="col-6"><%= @post.visibility_i18n %></td>
-            </tr>
-            <tr>
-              <th class="col-4 info-title">タグ</th>
-              <td class="col-6">
-                <% @post.tags.each do |tag| %>
-                  <%= tag.image_tags %>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <br>
+        <% if @user == current_user %>
+        <span class="row btn-area">
+          <%= button_to "Edit", edit_public_post_path(@post), method: :get , class: "edit-button" %>
+          <%= button_to "Delete", public_post_path(@post), method: :delete , class: "delete-button" %>
+        </span>
+        <% end %>
+        <br>
 
-        <table class="table post-link-list">
-        <!-- リンク -->
-          <tbody>
-            <tr>
-              <td class="col-3"></td>
-              <td class="col-1">
-                <!-- コメント -->
-                <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
-                  <i class="fa-solid fa-comment fa-xl"></i>
-                  <%= @post.post_comments.count %> 
-                <% end %>
-              </td>
-              <td class="col-1" id="favorite_btn_<%= @post.id %>">
-                <!-- いいね -->
-                  <%= render 'public/favorites/favorite', post: @post %>
-              </td>
-              <td class="col-1" id="bookmark_btn_<%= @post.id %>">
-                <!-- ブックマーク -->
-                  <%= render 'public/bookmarks/bookmark', post: @post %>
-              </td>
-              <td class="col-1">
-                <!-- マップ -->
-                <% if @post.address.present? %>
-                  <%= link_to public_post_map_path(@post), class: 'btn post-link' do %>
+        <div class="row info">
+          <table class="table post-info">
+            <tbody>
+              <tr>
+                <th  class="col-4 info-title">タイトル</th>
+                <td class="col-6"> <%= @post.title %></td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">ユーザー名</th>
+                <td class="col-6 info-name">
+                  <%= link_to public_user_path(@user.id), class: 'btn post-user' do %>
+                    <%= @post.user.name %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">詳細</th>
+                <td class="col-6"><%= @post.contents %></td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">場所</th>
+                <td class="col-6"><%= @post.address %></td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">訪問日</th>
+                <td class="col-6"><%= @post.visited_at.strftime('%Y/%m/%d') %></td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">公開範囲</th>
+                <td class="col-6"><%= @post.visibility_i18n %></td>
+              </tr>
+              <tr>
+                <th class="col-4 info-title">タグ</th>
+                <td class="col-6">
+                  <% @post.tags.each do |tag| %>
+                    <%= tag.image_tags %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table post-link-list">
+          <!-- リンク -->
+            <tbody>
+              <tr>
+                <td class="col-3"></td>
+                <td class="col-1">
+                  <!-- コメント -->
+                  <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
+                    <i class="fa-solid fa-comment fa-xl"></i>
+                    <%= @post.post_comments.count %> 
+                  <% end %>
+                </td>
+                <td class="col-1" id="favorite_btn_<%= @post.id %>">
+                  <!-- いいね -->
+                    <%= render 'public/favorites/favorite', post: @post %>
+                </td>
+                <td class="col-1" id="bookmark_btn_<%= @post.id %>">
+                  <!-- ブックマーク -->
+                    <%= render 'public/bookmarks/bookmark', post: @post %>
+                </td>
+                <td class="col-1">
+                  <!-- マップ -->
+                  <% if @post.address.present? %>
+                    <%= link_to public_post_map_path(@post), class: 'btn post-link' do %>
+                      <i class="fa-solid fa-location-dot fa-xl"></i>
+                    <% end %>
+                  <% else %>
+                  <%= link_to public_post_path(@post), class: 'btn post-link' do %>
                     <i class="fa-solid fa-location-dot fa-xl"></i>
                   <% end %>
-                <% else %>
-                <%= link_to public_post_path(@post), class: 'btn post-link' do %>
-                  <i class="fa-solid fa-location-dot fa-xl"></i>
-                <% end %>
-                <% end %>
-              </td>
-              <td class="col-3"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                  <% end %>
+                </td>
+                <td class="col-3"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <br>
-        
-      <div class="row back-btn-area">
-        <%= render 'back', url_path: edit_public_post_url(@post) %>
-      </div>
-
+        <br>
+          
+        <div class="row back-btn-area">
+          <%= render 'back', url_path: edit_public_post_url(@post) %>
+        </div>
+    </div>
   </div>
 </div>

@@ -48,7 +48,7 @@ class Public::UsersController < ApplicationController
       @posts = @user.posts.where(visibility: 0..3).order(created_at: :desc).page(params[:page])
       @allow = true
     else
-      @posts = @user.posts.where(visibility: 0).order(created_at: :desc).page(params[:page]).per(15)
+      @posts = @user.posts.where(visibility: 0).order(created_at: :desc).page(params[:page])
     end
   end
 
