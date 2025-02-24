@@ -146,3 +146,19 @@
   font-weight: bold;
   font-family: Century Gothic;
 }
+
+.unfollow-button{
+  padding: 10px 20px;
+  border-radius: 30px;/* 四隅を丸くする */
+  text-align: center;
+  margin-right: 10px;
+  background-color: transparent; /* 背景色を透明にする */
+  color: #54917f; /* ホバー時のテキスト色 */
+  border: 2px solid #54917f;
+  transition: background-color 0.3s; /* アニメーションを追加 */
+  font-weight: bold;
+}
+.unfollow-button:hover {
+  background-color: #54917f; 
+  color: white; 
+}
