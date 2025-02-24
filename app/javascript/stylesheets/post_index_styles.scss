@@ -87,6 +87,10 @@
   font-weight: bold;
   margin-top: 20px;
 }
+.title::first-letter {
+  color:  rgba(84, 145, 127, );
+}
+
 
 .pager-area {
   display: flex;

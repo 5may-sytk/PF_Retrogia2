@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-10 album-index"> 
-      <h2 class = "title">投稿一覧</h2> 
+      <h2 class = "title">ALBUM</h2> 
 
       <div class="row">
         <table class="table user-album">
@@ -43,8 +43,9 @@
       <br>
       <br>
       <div class="row back-btn-area">
-        <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
+        <%= render 'public/posts/1back' %>
       </div>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

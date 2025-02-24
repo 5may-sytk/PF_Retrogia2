@@ -1,0 +1,7 @@
+<button class="btn back-button" onclick="goBack()">戻る</button>
+  <script>
+    function goBack() {
+      var previousUrl = document.referrer;
+        window.history.back(); // ブラウザの履歴を1つ前に戻る
+    }
+  </script>
