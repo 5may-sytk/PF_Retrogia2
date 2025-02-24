@@ -6,15 +6,25 @@
 
 // ライブラリの読み込み
 let map;
+let marker;
+let center = {
+  lat: 34.7019399, // 緯度
+  lng: 135.51002519999997 // 経度
+};
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
   // 地図の中心と倍率は公式から変更しています。
   map = new Map(document.getElementById("map"), {
-    center: { lat: 35.681236, lng: 139.767125 }, 
+    center: center, 
     zoom: 15,
     mapTypeControl: false
+  });
+
+  marker = new google.maps.Marker({ // マーカーの追加
+    position: center, // マーカーを立てる位置を指定
+  map: map // マーカーを立てる地図を指定
   });
 }
 

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(async (position) => {
               const { latitude, longitude } = position.coords;
-              const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.Geocoding_API_Key}`);
+              const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyARoz6yawR0lt4Q8luJFqfwGjAEt4YFlqg`);
               const data = await response.json();
               console.log(data)
               if (data.results.length > 0) {
