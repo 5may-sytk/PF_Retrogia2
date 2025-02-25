@@ -15,7 +15,7 @@ import "../stylesheets/application";
 import "../stylesheets/custom_styles";
 
 import "./setCurrentTime"; 
-import "./getLocation"
+//import "./getLocation"
 import "./map"
 
 Rails.start()

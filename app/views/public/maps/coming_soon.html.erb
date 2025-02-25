@@ -9,7 +9,7 @@
     <div class="col-10 map-view"> 
       <h2 class = "title"> Coming soon!</h2> 
         <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
-        <div id="map"></div>
+        <div id="map" data-post_id="<%= @post.id %>" data-latitude="<%= @post.latitude %>" data-longitude="<%= @post.longitude %>"></div>
       <br>
       <div class="row back-btn-area">
         <%= render 'public/posts/1back' %>
