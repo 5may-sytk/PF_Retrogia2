@@ -1,21 +1,46 @@
-// ブートストラップ ローダ
-(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-  key: process.env.Maps_JavaScript_API_Key
-});
-
-
-// ライブラリの読み込み
 let map;
+  let marker = []; // マーカーを複数表示させたいので、配列化
+  let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+  let markerData = gon.users; // コントローラーで定義したインスタンス変数を変数に代入
 
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
 
-  // 地図の中心と倍率は公式から変更しています。
-  map = new Map(document.getElementById("map"), {
-    center: { lat: 35.681236, lng: 139.767125 }, 
-    zoom: 15,
-    mapTypeControl: false
-  });
-}
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 35.6585, lng: 139.7486 }, // 東京タワーを中心に表示させている
+      zoom: 12,
+    });
 
-initMap()
+    // 繰り返し処理でマーカーと吹き出しを複数表示させる
+    for (var i = 0; i < markerData.length; i++) {
+      let id = markerData[i]['id']
+
+      // 各地点の緯度経度を算出
+      markerLatLng = new google.maps.LatLng({
+        lat: markerData[i]['latitude'],
+        lng: markerData[i]['longitude']
+      });
+
+      // 各地点のマーカーを作成
+      marker[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map
+      });
+
+      // 各地点の吹き出しを作成
+      infoWindow[i] = new google.maps.InfoWindow({
+        // 吹き出しの内容
+        content: markerData[i]['address']
+      });
+
+      // マーカーにクリックイベントを追加
+      markerEvent(i);
+    }
+  }
+
+  // マーカーをクリックしたら吹き出しを表示
+  function markerEvent(i) {
+    marker[i].addListener('click', function () {
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
