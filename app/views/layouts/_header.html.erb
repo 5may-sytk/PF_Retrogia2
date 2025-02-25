@@ -32,7 +32,7 @@
                   <%= link_to 'Home', public_posts_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'New', new_public_post_path, class: 'btn btn-custom', style: 'font-size: 20px;',data: {"turbolinks"=>false} %>
+                  <%= link_to 'New', new_public_post_path, class: 'btn btn-custom', data: {"turbolinks"=>false}, style: 'font-size: 20px; ' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
                   <%= link_to 'MyPage', public_user_path(current_user.id), class: 'btn btn-custom', style: 'font-size: 20px;' %>
