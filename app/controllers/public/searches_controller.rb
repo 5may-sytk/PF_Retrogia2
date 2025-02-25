@@ -6,6 +6,11 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
     end
 
+    if @word.blank?
+      redirect_to public_posts_path
+      return
+    end
+
     if @range == "投稿"
       @posts = Post.where("title LIKE ? AND visibility == 0", "%#{@word}%")
 
