@@ -1,5 +1,10 @@
 class Public::MapsController < ApplicationController
   def show
-    @posts = Post.select(:latitude, :longitude, :title)
+    @post = Post.find_by(id:params[:post_id])
+    gon.post = Post.find_by(id:params[:post_id])
+  end
+
+  def coming_soon
+    @post = Post.find_by(id:params[:post_id])
   end
 end

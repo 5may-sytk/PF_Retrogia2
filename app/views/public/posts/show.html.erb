@@ -100,7 +100,7 @@
                       <i class="fa-solid fa-location-dot fa-xl"></i>
                     <% end %>
                   <% else %>
-                  <%= link_to public_post_path(@post), class: 'btn post-link' do %>
+                  <%= link_to public_post_path(@post), class: 'btn post-link',data: {"turbolinks"=>false} do %>
                     <i class="fa-solid fa-location-dot fa-xl"></i>
                   <% end %>
                   <% end %>

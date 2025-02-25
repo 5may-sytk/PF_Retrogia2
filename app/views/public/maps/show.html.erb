@@ -8,6 +8,8 @@
 
     <div class="col-10 map-view"> 
     <h2 class = "title"> Map</h2> 
+    <%= @post.latitude %>
+    <%= @post.longitude %>
       <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
       <div id="map"></div>
       <br>
@@ -17,4 +19,3 @@
     </div>
   </div>
 </div>
-<%= tag.div id:"post-data", data: { post: @posts.to_json} %>
