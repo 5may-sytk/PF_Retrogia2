@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row views">
+  
+    <div class="col-2 sidebar">
+      <!-- サイドバー --> 
+      <%= render 'public/posts/sidebar' %>
+    </div>
+
+    <div class="col-10 map-view"> 
+      <h2 class = "title"> Coming soon!</h2> 
+        <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+        <div id="map"></div>
+      <br>
+      <div class="row back-btn-area">
+        <%= render 'public/posts/1back' %>
+      </div>
+    </div>
+  </div>
+</div>
