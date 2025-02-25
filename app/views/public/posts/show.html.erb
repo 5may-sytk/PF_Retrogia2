@@ -96,7 +96,7 @@
                 <td class="col-1">
                   <!-- マップ -->
                   <% if @post.address.present? %>
-                    <%= link_to public_post_map_path(@post), class: 'btn post-link' do %>
+                    <%= link_to coming_soon_public_post_map_path(@post), class: 'btn post-link' do %>
                       <i class="fa-solid fa-location-dot fa-xl"></i>
                     <% end %>
                   <% else %>

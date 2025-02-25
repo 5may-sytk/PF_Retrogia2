@@ -4,19 +4,11 @@ class Public::SearchesController < ApplicationController
   def search
     @range = params[:range]
     @word = params[:word]
-
-    if @word.blank?
-      redirect_to public_posts_path
-      return
     end
 
     if @range == "投稿"
       @posts = Post.where("title LIKE ? AND visibility == 0", "%#{@word}%")
 
-      unless @posts.exists?
-        redirect_to public_search_path
-        return
-      end
     end
 
     if @range == "ユーザー"
@@ -25,11 +17,7 @@ class Public::SearchesController < ApplicationController
       else
         @users = User.where("name LIKE ?", "%#{@word}%")
       end
-  
-      if @users.exists?(is_public: false)
-        redirect_to public_search_path
-        return
-      end
+
     end
 
     if @range == "タグ"
@@ -37,10 +25,6 @@ class Public::SearchesController < ApplicationController
       #@posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where(tags.image_tags, @word)
       @posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%")
     
-      unless @posts.exists?
-        redirect_to public_search_path
-        return
-      end
-    end
+
   end
 end
