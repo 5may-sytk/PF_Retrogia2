@@ -27,7 +27,9 @@
         </td>
         <td class="follow-btn-area">
           <br>
-          <%= render 'public/relationships/btn',user: user  %>
+          <% if user != current_user %>
+            <%= render 'public/relationships/btn',user: user  %>
+          <% end %>
         </td>
       </tr>
     <% end %>
