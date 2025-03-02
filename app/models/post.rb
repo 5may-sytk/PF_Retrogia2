@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  attr_accessor :image_tags
+
   has_one_attached :post_image
 
   belongs_to :user
@@ -16,6 +18,8 @@ class Post < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode
+
+  after_save :create_google_tags
 
   def favorited_by?(user)
     favorites.exists?(user_id: user&.id)
@@ -46,6 +50,18 @@ class Post < ApplicationRecord
       tag_id = Tag.find_by(image_tags: tag)
       destroy_post_tag = PostTag.find_by(tag_id: tag_id, post_id: id)
       destroy_post_tag.destroy
+    end
+  end
+
+  private
+
+  def create_google_tags
+    #input_tags = self.image_tags.split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    #self.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
+
+    self.image_tags.each do |tag_name|
+      tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
+      self.tags << tag unless self.tags.include?(tag)  # `PostTag` を作成
     end
   end
 end

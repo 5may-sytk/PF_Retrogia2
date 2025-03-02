@@ -10,11 +10,20 @@ class Public::PostsController < ApplicationController
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
 
-    input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
-    @post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
+    # 画像解析
+    #vision_tags = Vision.get_image_data(post_params[:post_image])
+    @post.image_tags = Vision.get_image_data(post_params[:post_image])
+
+    #input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    #@post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
 
     if @post.save
       redirect_to public_posts_path
+
+      #vision_tags.each do |tag_name|
+      #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
+      #  @post.tags << tag unless @post.tags.include?(tag)  # `PostTag` を作成
+      #end
     else
       flash.now[:notice] = "登録に失敗しました。"
       render :new
@@ -65,7 +74,7 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, 
-                                 :visited_at,:visibility,:post_image, :posts_visibility_ranges)
+                                 :visited_at,:visibility,:post_image, :posts_visibility_ranges, :image_tags)
   end
 
   def tag_params # tagに関するストロングパラメータ
