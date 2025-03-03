@@ -12,7 +12,13 @@ class Public::PostsController < ApplicationController
 
     # 画像解析
     #vision_tags = Vision.get_image_data(post_params[:post_image])
-    @post.image_tags = Vision.get_image_data(post_params[:post_image])
+    if post_params[:post_image]
+      @post.image_tags = Vision.get_image_data(post_params[:post_image])
+    else
+      flash.now[:notice] = "画像が投稿されていません。"
+      render :new
+      return
+    end
 
     #input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
     #@post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
@@ -55,6 +61,12 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    unless post_params[:post_image]
+      flash.now[:notice] = "画像が投稿されていません。"
+      render :edit
+      return
+    end
+
     if @post.update(post_params)
       input_tags = tag_params[:image_tags].split("#")
       @post.update_tags(input_tags)
