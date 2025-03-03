@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :visited_at, presence: true
   #validates :address, presence: true
+  validates :post_image, presence: true
 
   geocoded_by :address
   after_validation :geocode
