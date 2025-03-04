@@ -10,19 +10,6 @@ class Public::PostsController < ApplicationController
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
 
-    # 画像解析
-    #vision_tags = Vision.get_image_data(post_params[:post_image])
-    if post_params[:post_image]
-      @post.image_tags = Vision.get_image_data(post_params[:post_image])
-    else
-      flash.now[:notice] = "画像が投稿されていません。"
-      render :new
-      return
-    end
-
-    #input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
-    #@post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
-
     if @post.save
       redirect_to public_posts_path
 
@@ -62,13 +49,15 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    unless post_params[:post_image]
+    if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
       render :edit
       return
     end
 
-    if @post.update(post_params)
+    update_params = post_params[:post_image].present? ? post_params : post_params.except(:post_image)
+
+    if @post.update(update_params)
       input_tags = tag_params[:image_tags].split("#")
       @post.update_tags(input_tags)
       redirect_to public_post_path(@post.id)
@@ -87,7 +76,8 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, 
-                                 :visited_at,:visibility,:post_image, :posts_visibility_ranges, :image_tags)
+                                 :visited_at,:visibility,:post_image, :image_tags,
+                                 :posts_visibility_ranges)
   end
 
   def tag_params # tagに関するストロングパラメータ
