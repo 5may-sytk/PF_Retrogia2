@@ -58,6 +58,30 @@ class Post < ApplicationRecord
     end
   end
 
+  def check_safe_search(results)
+    error_messages = []
+
+    results.each do |result|
+      error_reasons = []
+      
+      result.each do |category, score|
+        if score == "LIKELY" || score == "VERY_LIKELY"
+          error_reasons << category
+        end
+      end
+
+      if error_reasons.any?
+        error_messages << "#{error_reasons.join(", ")}要素を含む画像は投稿できません"
+      end
+    end
+
+    unless error_messages.any?
+      error_messages << "画像が安全ではありません。（不明な理由で却下されました）"
+    end
+
+    return error_messages
+  end
+
   private
 
   def create_auto_tags

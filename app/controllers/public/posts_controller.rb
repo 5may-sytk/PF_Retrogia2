@@ -9,16 +9,31 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
+    is_safe = Vision.image_analysis(post_params[:post_image])
+    results = Vision.image_analysis(post_params[:post_image])
 
-    if @post.save
-      redirect_to public_posts_path
+    if post_params[:post_image].blank? && !@post.post_image.attached?
+      flash.now[:notice] = "画像が投稿されていません。"
+      render :new
+      return
+    end
 
-      #vision_tags.each do |tag_name|
-      #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
-      #  @post.tags << tag unless @post.tags.include?(tag)  # `PostTag` を作成
-      #end
+    if is_safe
+      if @post.save
+        redirect_to public_posts_path
+
+        #vision_tags.each do |tag_name|
+        #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
+        #  @post.tags << tag unless @post.tags.include?(tag)  # `PostTag` を作成
+        #end
+      else
+
+        flash.now[:notice] = "登録に失敗しました。"
+        render :new
+      end
     else
-      flash.now[:notice] = "登録に失敗しました。"
+      error_messages = @post.check_safe_search(results)
+      flash.now[:notice] = error_messages.join(", ")
       render :new
     end
   end
@@ -57,12 +72,16 @@ class Public::PostsController < ApplicationController
 
     update_params = post_params[:post_image].present? ? post_params : post_params.except(:post_image)
 
-    if @post.update(update_params)
-      input_tags = tag_params[:image_tags].split("#")
-      @post.update_tags(input_tags)
-      redirect_to public_post_path(@post.id)
+    if is_safe
+      if @post.update(update_params)
+        redirect_to public_post_path(@post.id)
+      else
+        flash.now[:notice] = "編集に失敗しました。"
+        render :edit
+      end
     else
-      flash.now[:notice] = "編集に失敗しました。"
+      error_messages = @post.check_safe_search(results)
+      flash.now[:notice] = error_messages.join(", ")
       render :edit
     end
   end
