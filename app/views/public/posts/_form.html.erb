@@ -1,9 +1,13 @@
-<%= form_with(model: post, url: form_url) do |f| %>
+<%= form_with(model: post, url: form_url, local: true) do |f| %>
 
   <!-- 画像 --> 
   <div class="form-group row">
-    <label for="image" class="col-sm-5 col-form-label">写真アップロード</label>
-    <div class="col-sm-7 col-form">
+    <label for="post_image" class="col-sm-5 col-form-label">写真アップロード</label>
+    <div class="col-sm-7">
+      <% if post.post_image.attached? %>
+        <%= image_tag post.post_image, class: "post-image", size: "150x125" %>
+      <% end %>
+      <br>
       <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
     </div>
   </div>
