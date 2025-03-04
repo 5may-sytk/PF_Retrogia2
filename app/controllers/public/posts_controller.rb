@@ -61,6 +61,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+
     unless post_params[:post_image]
       flash.now[:notice] = "画像が投稿されていません。"
       render :edit
