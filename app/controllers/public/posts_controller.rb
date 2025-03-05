@@ -9,15 +9,15 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
-    is_safe = Vision.image_analysis(post_params[:post_image])
-    results = Vision.image_analysis(post_params[:post_image])
-
+    #results = Vision.image_analysis(post_params[:post_image])
+    
     if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
       render :new
       return
     end
-
+    
+    is_safe = Vision.image_analysis(post_params[:post_image])
     if is_safe
       if @post.save
         redirect_to public_posts_path
@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
         render :new
       end
     else
-      error_messages = @post.check_safe_search(results)
+      error_messages = @post.check_safe_search(is_safe)
       flash.now[:notice] = error_messages.join(", ")
       render :new
     end
@@ -63,15 +63,21 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
+    
     if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
       render :edit
       return
     end
-
-    update_params = post_params[:post_image].present? ? post_params : post_params.except(:post_image)
-
+    
+    if post_params[:post_image].present?
+      update_params = post_params
+      is_safe = Vision.image_analysis(post_params[:post_image])
+    else
+      update_params = post_params.except(:post_image)
+      is_safe = true
+    end
+    
     if is_safe
       if @post.update(update_params)
         redirect_to public_post_path(@post.id)
@@ -80,7 +86,7 @@ class Public::PostsController < ApplicationController
         render :edit
       end
     else
-      error_messages = @post.check_safe_search(results)
+      error_messages = @post.check_safe_search(is_safe)
       flash.now[:notice] = error_messages.join(", ")
       render :edit
     end

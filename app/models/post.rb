@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  after_save :create_auto_tags
+  after_create :create_auto_tags
   after_update :update_auto_tags
 
   def favorited_by?(user)
@@ -31,11 +31,9 @@ class Post < ApplicationRecord
   end
 
   def create_tags(input_tags)
-    input_tags.each do |tag| 
-      unless tags.pluck(:image_tags).include?(tag)                    
-        new_tag = Tag.find_or_create_by(image_tags: tag) 
-        tags << new_tag     
-      end                       
+    input_tags.each do |tag|                
+      new_tag = Tag.find_or_create_by(image_tags: tag) 
+      tags << new_tag                         
     end
   end
 
@@ -61,25 +59,10 @@ class Post < ApplicationRecord
   def check_safe_search(results)
     error_messages = []
 
-    results.each do |result|
-      error_reasons = []
-      
-      result.each do |category, score|
-        if score == "LIKELY" || score == "VERY_LIKELY"
-          error_reasons << category
-        end
-      end
-
-      if error_reasons.any?
-        error_messages << "#{error_reasons.join(", ")}要素を含む画像は投稿できません"
-      end
+    if results == false
+      error_messages << "不適切要素を含む画像は投稿できません"
+      return error_messages
     end
-
-    unless error_messages.any?
-      error_messages << "画像が安全ではありません。（不明な理由で却下されました）"
-    end
-
-    return error_messages
   end
 
   private

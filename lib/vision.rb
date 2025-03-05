@@ -38,15 +38,7 @@ module Vision
         raise error['message']
       else
         result_arr = result["responses"].flatten.map do |parsed_image|
-          parsed_image["safeSearchAnnotation"].values
           safe_search = parsed_image["safeSearchAnnotation"]
-
-          puts "Image #{parsed_image['id']} - Safe Search Scores:"
-          puts "Medical: #{safe_search['medical']}"
-          puts "Violence: #{safe_search['violence']}"
-          puts "Spoof: #{safe_search['spoof']}"
-          puts "Racy: #{safe_search['racy']}"
-          puts "Adult: #{safe_search['adult']}"
           
           parsed_image["safeSearchAnnotation"].values
 
