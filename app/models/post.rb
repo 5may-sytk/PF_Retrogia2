@@ -15,12 +15,12 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :visited_at, presence: true
   #validates :address, presence: true
-  validates :post_image, presence: true
 
   geocoded_by :address
   after_validation :geocode
 
-  after_save :create_google_tags
+  after_create :create_auto_tags
+  after_update :update_auto_tags
 
   def favorited_by?(user)
     favorites.exists?(user_id: user&.id)
@@ -31,9 +31,9 @@ class Post < ApplicationRecord
   end
 
   def create_tags(input_tags)
-    input_tags.each do |tag|                     
+    input_tags.each do |tag|                
       new_tag = Tag.find_or_create_by(image_tags: tag) 
-      tags << new_tag                            
+      tags << new_tag                         
     end
   end
 
@@ -43,8 +43,10 @@ class Post < ApplicationRecord
     destroy_tags = registered_tags - input_tags # 削除されたタグ
   
     new_tags.each do |tag| # 新しいタグをモデルに追加
-      new_tag = Tag.find_or_create_by(image_tags: tag)
-      tags << new_tag
+      unless tags.pluck(:image_tags).include?(tag)
+        new_tag = Tag.find_or_create_by(image_tags: tag)
+        tags << new_tag
+      end
     end
   
     destroy_tags.each do |tag| # 削除されたタグを中間テーブルから削除
@@ -54,15 +56,29 @@ class Post < ApplicationRecord
     end
   end
 
+  def check_safe_search(results)
+    error_messages = []
+
+    if results == false
+      error_messages << "不適切要素を含む画像は投稿できません"
+      return error_messages
+    end
+  end
+
   private
 
-  def create_google_tags
-    #input_tags = self.image_tags.split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
-    #self.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
+  def create_auto_tags
+    input_tags = self.image_tags.split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    self.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
 
-    self.image_tags.each do |tag_name|
-      tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
-      self.tags << tag unless self.tags.include?(tag)  # `PostTag` を作成
-    end
+    #self.image_tags.each do |tag_name|
+    #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
+    #  self.tags << tag unless self.tags.include?(tag)  # `PostTag` を作成
+    #end
+  end
+
+  def update_auto_tags
+    input_tags = self.image_tags.split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
+    self.update_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
   end
 end

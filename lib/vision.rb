@@ -4,7 +4,7 @@ require 'net/https'
 
 module Vision
   class << self
-    def get_image_data(image_file)
+    def image_analysis(image_file)
       # APIのURL作成
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['Google_API_KEY']}"
 
@@ -19,7 +19,7 @@ module Vision
           },
           features: [
             {
-              type: 'LABEL_DETECTION'
+              type: "SAFE_SEARCH_DETECTION"
             }
           ]
         }]
@@ -32,16 +32,22 @@ module Vision
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
-      response_body = JSON.parse(response.body)
+      result = JSON.parse(response.body)
       # APIレスポンス出力
-      if (error = response_body['responses'][0]['error']).present?
+      if (error = result['responses'][0]['error']).present?
         raise error['message']
       else
-        # 英語のラベルを取得
-        labels = response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
+        result_arr = result["responses"].flatten.map do |parsed_image|
+          safe_search = parsed_image["safeSearchAnnotation"]
+          
+          parsed_image["safeSearchAnnotation"].values
 
-        # 日本語に翻訳
-        labels.map { |label| translate_text(label) }
+        end.flatten
+        if result_arr.include?("LIKELY") || result_arr.include?("VERY_LIKELY")
+          false
+        else
+          true
+        end
       end
     end
 

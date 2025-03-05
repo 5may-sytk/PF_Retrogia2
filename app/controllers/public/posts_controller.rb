@@ -9,29 +9,31 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
-
-    # 画像解析
-    #vision_tags = Vision.get_image_data(post_params[:post_image])
-    if post_params[:post_image]
-      @post.image_tags = Vision.get_image_data(post_params[:post_image])
-    else
+    #results = Vision.image_analysis(post_params[:post_image])
+    
+    if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
       render :new
       return
     end
+    
+    is_safe = Vision.image_analysis(post_params[:post_image])
+    if is_safe
+      if @post.save
+        redirect_to public_posts_path
 
-    #input_tags = tag_params[:image_tags].split("#")    # tag_paramsをsplitメソッドを用いて配列に変換する
-    #@post.create_tags(input_tags)   # create_tagsはpost.rbにメソッドを記載している
+        #vision_tags.each do |tag_name|
+        #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
+        #  @post.tags << tag unless @post.tags.include?(tag)  # `PostTag` を作成
+        #end
+      else
 
-    if @post.save
-      redirect_to public_posts_path
-
-      #vision_tags.each do |tag_name|
-      #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
-      #  @post.tags << tag unless @post.tags.include?(tag)  # `PostTag` を作成
-      #end
+        flash.now[:notice] = "登録に失敗しました。"
+        render :new
+      end
     else
-      flash.now[:notice] = "登録に失敗しました。"
+      error_messages = @post.check_safe_search(is_safe)
+      flash.now[:notice] = error_messages.join(", ")
       render :new
     end
   end
@@ -61,19 +63,31 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
-    unless post_params[:post_image]
+    
+    if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
       render :edit
       return
     end
-
-    if @post.update(post_params)
-      input_tags = tag_params[:image_tags].split("#")
-      @post.update_tags(input_tags)
-      redirect_to public_post_path(@post.id)
+    
+    if post_params[:post_image].present?
+      update_params = post_params
+      is_safe = Vision.image_analysis(post_params[:post_image])
     else
-      flash.now[:notice] = "編集に失敗しました。"
+      update_params = post_params.except(:post_image)
+      is_safe = true
+    end
+    
+    if is_safe
+      if @post.update(update_params)
+        redirect_to public_post_path(@post.id)
+      else
+        flash.now[:notice] = "編集に失敗しました。"
+        render :edit
+      end
+    else
+      error_messages = @post.check_safe_search(is_safe)
+      flash.now[:notice] = error_messages.join(", ")
       render :edit
     end
   end
@@ -87,7 +101,8 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, 
-                                 :visited_at,:visibility,:post_image, :posts_visibility_ranges, :image_tags)
+                                 :visited_at,:visibility,:post_image, :image_tags,
+                                 :posts_visibility_ranges)
   end
 
   def tag_params # tagに関するストロングパラメータ

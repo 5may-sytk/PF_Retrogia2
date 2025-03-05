@@ -12,6 +12,10 @@
         <div class="col p-forms">
           <h2 class = "title"> New</h2> 
           <br>
+            <div class="flash">
+                    <%= flash[:notice] %>
+            </div>
+          <br>
           <% if @post.errors.any? %>
             <%= @post.errors.count %>件のエラーが発生しました
             <ul>
