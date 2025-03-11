@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       resource :map, only: [:show] 
-      
+      get 'follower_feed', to:'posts#follower_feed'
     end
       get "search" => "searches#search"
       get 'favorites/favorited'
