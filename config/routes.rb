@@ -42,7 +42,6 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       resource :map, only: [:show] 
-
     end
       get "search" => "searches#search"
       get 'favorites/favorited'
