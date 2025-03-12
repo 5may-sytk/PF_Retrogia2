@@ -98,6 +98,9 @@ class Public::PostsController < ApplicationController
     redirect_to public_posts_path
   end
 
+  def follower_feed
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :contents, :address, :latitude, :longitude, 
