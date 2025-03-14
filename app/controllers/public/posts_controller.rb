@@ -99,6 +99,11 @@ class Public::PostsController < ApplicationController
   end
 
   def follower_feed
+    if current_user
+      @posts = Post.where(visibility: 0).or(Post.where(user_id: current_user.id)).order(created_at: :desc).page(params[:page])
+    else
+      @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page])
+    end
   end
 
   private

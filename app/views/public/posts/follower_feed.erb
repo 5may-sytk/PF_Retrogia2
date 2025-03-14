@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row views">
+
+    <div class="col-2 sidebar d-flex flex-column"> 
+      <!-- サイドバー -->  
+      <%= render 'sidebar' %>
+    </div>
+
+    <div class="col-9 follower_feed"> 
+    <!--メイン-->
+      <br>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+
+    <div class="posts">
+        <table class='table table-hover'>
+          <tbody>
+            <% @posts.each do |post| %>
+              <%= render partial: 'posts', locals: { post: post } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="pager-area">
+        <%= paginate @posts %>
+      </div>
+    </div>
+  </div>
+</div>
