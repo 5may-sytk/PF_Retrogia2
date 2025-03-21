@@ -25,7 +25,12 @@ class Public::SearchesController < ApplicationController
     if @range == "タグ"
       #@posts = Post.joins(:post_tags).joins(:tags).where(tags: {"image_tags LIKE ?" => "%#{@word}%"})
       #@posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where(tags.image_tags, @word)
-      @posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%")
+
+      #最終決定
+      #@posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%")
+      #FBで提示されたもの
+      #@posts = Post.where(visibility: 0).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%").distinct
+      @posts = Post.where(visibility: 0).joins(:post_tags).joins(:tags).where("tags.image_tags LIKE ?", "%#{@word}%").distinct
     end
   end
 end
