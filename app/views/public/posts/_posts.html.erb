@@ -3,7 +3,7 @@
     <span class="image">
       <% if post.post_image.attached? %>
         <%= link_to public_post_path(post), class: 'side-nav-item' do %>
-          <%= image_tag url_for(post.post_image), size: "250x200" %>
+          <%= image_tag url_for(post.post_image), class: "post-image-cover" %>
         <% end %>
       <% else %>
         <%= link_to public_post_path(post), class: 'side-nav-item' do %>
