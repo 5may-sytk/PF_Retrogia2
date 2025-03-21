@@ -15,7 +15,7 @@
         <div class="row post-image">
           <div class="post-image-bg">
             <% if @post.post_image.attached? %>
-              <%= image_tag url_for(@post.post_image), size: "300x250" %>
+              <%= image_tag url_for(@post.post_image), class: "post-show-image-cover" %>
             <% else %>
               <%= image_tag 'noimage.png', size: "300x250" %>
             <% end %>

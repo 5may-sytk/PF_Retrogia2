@@ -25,6 +25,12 @@
   border-radius: 5px; /* 枠線の角を丸くする */
 }
 
+.post-show-image-cover{
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+}
+
 .user-info {
   margin: auto;
 }
