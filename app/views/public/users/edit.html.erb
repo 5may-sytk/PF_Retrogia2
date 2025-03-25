@@ -22,7 +22,7 @@
         </ul>
       <% end %>
     <br>
-      <%= form_with(model: @user, url: public_user_path(@user)) do |f| %>
+      <%= form_with(model: @user, url: user_path(@user)) do |f| %>
 
         <!-- 画像 -->
         <div class="form-groupe row">
@@ -66,7 +66,7 @@
             <%= f.submit " 保存 ", class: "btn btn-sm submit-button" %>
             <span>　　</span>
             <!-- 退会 --> 
-            <%= link_to '退会する', confirmation_public_users_path, class: 'btn unsubsribe-button' %>
+            <%= link_to '退会する', confirmation_users_path, class: 'btn unsubsribe-button' %>
           </div>
 
       <% end %>

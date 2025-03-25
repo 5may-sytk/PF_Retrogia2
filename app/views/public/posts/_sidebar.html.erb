@@ -14,23 +14,23 @@
       <div class="d-flex flex-column">
         <% if user_signed_in? %>
           <!-- ユーザーサイドバー -->
-          <%= link_to public_posts_path, class: 'btn side-nav-item' do %>
+          <%= link_to posts_path, class: 'btn side-nav-item' do %>
             Home
           <% end %>
 
-          <%= link_to new_public_post_path, class: 'btn side-nav-item', data: {"turbolinks"=>false} do %>
+          <%= link_to new_post_path, class: 'btn side-nav-item', data: {"turbolinks"=>false} do %>
             New
           <% end %>
 
-          <%= link_to public_user_path(current_user.id), class: 'btn side-nav-item' do %>
+          <%= link_to user_path(current_user.id), class: 'btn side-nav-item' do %>
             MyPage
           <% end %>
 
-          <%= link_to public_favorites_favorited_path(current_user), class: 'btn side-nav-item' do %>
+          <%= link_to favorites_favorited_path(current_user), class: 'btn side-nav-item' do %>
             Favorite
           <% end %>
 
-          <%= link_to public_bookmarks_bookmarked_path(current_user), class: 'btn side-nav-item' do %>
+          <%= link_to bookmarks_bookmarked_path(current_user), class: 'btn side-nav-item' do %>
             Bookmark
           <% end %>
 
@@ -40,7 +40,7 @@
         <% else %>
           <!-- 非ログイン時 --> 
 
-          <%= link_to public_posts_path, class: 'btn side-nav-item' do %>
+          <%= link_to posts_path, class: 'btn side-nav-item' do %>
             Home
           <% end %>
 

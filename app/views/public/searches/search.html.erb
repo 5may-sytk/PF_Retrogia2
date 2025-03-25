@@ -40,17 +40,17 @@
                 <tr class="results">
                   <td>
                     <% if post.post_image.attached? %>
-                      <%= link_to public_post_path(post), class: 's-post-image' do %>
+                      <%= link_to post_path(post), class: 's-post-image' do %>
                         <%= image_tag url_for(post.post_image), size: "150x125" %>
                       <% end %>
                     <% else %>
-                      <%= link_to public_post_path(post), class: 's-post-image' do %>
+                      <%= link_to post_path(post), class: 's-post-image' do %>
                         <%= image_tag 'noimage.png', size: "150x125" %>
                       <% end %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to public_post_path(post), class: 's-post-title' do %>
+                    <%= link_to post_path(post), class: 's-post-title' do %>
                       <%= post.title %>
                     <% end %>
                   </td>

@@ -9,7 +9,7 @@
     <% users.each do |user| %>
       <tr class="follower-info">
         <td>
-          <%= link_to public_user_path(user.id), class: 'btn post-user' do %>
+          <%= link_to user_path(user.id), class: 'btn post-user' do %>
             <% if user.user_image.attached? %>
               <%= image_tag url_for(user.user_image), size: "100x70" %>
             <% else %>

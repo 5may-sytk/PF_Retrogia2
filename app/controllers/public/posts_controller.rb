@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
     is_safe = Vision.image_analysis(post_params[:post_image])
     if is_safe
       if @post.save
-        redirect_to public_posts_path
+        redirect_to posts_path
 
         #vision_tags.each do |tag_name|
         #  tag = Tag.find_or_create_by(image_tags: tag_name)  # 既存タグを再利用 or 新規作成
@@ -57,7 +57,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     unless @user.id == current_user.id
-      redirect_to public_posts_path
+      redirect_to posts_path
     end
   end
 
@@ -80,7 +80,7 @@ class Public::PostsController < ApplicationController
     
     if is_safe
       if @post.update(update_params)
-        redirect_to public_post_path(@post.id)
+        redirect_to post_path(@post.id)
       else
         flash.now[:notice] = "編集に失敗しました。"
         render :edit
@@ -95,7 +95,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to public_posts_path
+    redirect_to posts_path
   end
 
   private

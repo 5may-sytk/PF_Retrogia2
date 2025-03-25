@@ -25,8 +25,8 @@
         <br>
         <% if @user == current_user %>
         <span class="row btn-area">
-          <%= button_to "Edit", edit_public_post_path(@post), method: :get , class: "edit-button" %>
-          <%= button_to "Delete", public_post_path(@post), method: :delete , class: "delete-button" %>
+          <%= button_to "Edit", edit_post_path(@post), method: :get , class: "edit-button" %>
+          <%= button_to "Delete", post_path(@post), method: :delete , class: "delete-button" %>
         </span>
         <% end %>
         <br>
@@ -41,7 +41,7 @@
               <tr>
                 <th class="col-4 info-title">ユーザー名</th>
                 <td class="col-6 info-name">
-                  <%= link_to public_user_path(@user.id), class: 'btn post-user' do %>
+                  <%= link_to user_path(@user.id), class: 'btn post-user' do %>
                     <%= @post.user.name %>
                   <% end %>
                 </td>
@@ -80,7 +80,7 @@
                 <td class="col-3"></td>
                 <td class="col-1">
                   <!-- コメント -->
-                  <%= link_to public_post_post_comments_path(@post), class: 'btn post-link' do %>
+                  <%= link_to post_post_comments_path(@post), class: 'btn post-link' do %>
                     <i class="fa-solid fa-comment fa-xl"></i>
                     <%= @post.post_comments.count %> 
                   <% end %>
@@ -96,11 +96,11 @@
                 <td class="col-1">
                   <!-- マップ -->
                   <% if @post.address.present? %>
-                    <%= link_to public_post_map_path(@post), class: 'btn post-link' do %>
+                    <%= link_to post_map_path(@post), class: 'btn post-link' do %>
                       <i class="fa-solid fa-location-dot fa-xl"></i>
                     <% end %>
                   <% else %>
-                  <%= link_to public_post_path(@post), class: 'btn post-link',data: {"turbolinks"=>false} do %>
+                  <%= link_to post_path(@post), class: 'btn post-link',data: {"turbolinks"=>false} do %>
                     <i class="fa-solid fa-location-dot fa-xl"></i>
                   <% end %>
                   <% end %>
@@ -114,7 +114,7 @@
         <br>
           
         <div class="row back-btn-area">
-          <%= render 'back', url_path: edit_public_post_url(@post) %>
+          <%= render 'back', url_path: edit_post_url(@post) %>
         </div>
     </div>
   </div>
