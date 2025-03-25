@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
   end
 
-  namespace :public do
+  scope module: :public do
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
