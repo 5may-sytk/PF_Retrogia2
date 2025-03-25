@@ -2,11 +2,11 @@
   <td>
     <span class="image">
       <% if post.post_image.attached? %>
-        <%= link_to public_post_path(post), class: 'side-nav-item' do %>
+        <%= link_to post_path(post), class: 'side-nav-item' do %>
           <%= image_tag url_for(post.post_image), class: "post-image-cover" %>
         <% end %>
       <% else %>
-        <%= link_to public_post_path(post), class: 'side-nav-item' do %>
+        <%= link_to post_path(post), class: 'side-nav-item' do %>
           <%= image_tag 'noimage.png', size: "250x200" %>
         <% end %>
       <% end %>
@@ -17,7 +17,7 @@
       <br>
     </span>
     <span>
-      <%= link_to public_post_path(post), class: 'btn post-title' do %>
+      <%= link_to post_path(post), class: 'btn post-title' do %>
         <%= post.title %><br>
       <% end %>
     </span>
@@ -25,7 +25,7 @@
       <br>
     </span>
     <span>
-      <%= link_to public_user_path(post.user), class: 'btn post-user' do %>
+      <%= link_to user_path(post.user), class: 'btn post-user' do %>
         <%= post.user.name %>
       <% end %>
     </span>

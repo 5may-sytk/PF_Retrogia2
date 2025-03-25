@@ -15,11 +15,11 @@
             <tr class="albums">
               <td>
                 <% if post.post_image.attached? %>
-                  <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                  <%= link_to post_path(post.id), class: 'side-nav-item' do %>
                     <%= image_tag url_for(post.post_image), size: "150x100" %>
                   <% end %>
                 <% else %>
-                  <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+                  <%= link_to post_path(post.id), class: 'side-nav-item' do %>
                     <%= image_tag 'noimage.png', size: "150x100" %>
                   <% end %>
                 <% end %>

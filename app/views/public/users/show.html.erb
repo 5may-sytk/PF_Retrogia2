@@ -19,11 +19,11 @@
         <div class="row user-post-image">
           <% @posts.each do |post| %>
             <% if post.post_image.attached? %>
-              <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+              <%= link_to post_path(post.id), class: 'side-nav-item' do %>
                 <%= image_tag url_for(post.post_image), size: "150x100" %>
               <% end %>
             <% else %>
-              <%= link_to public_post_path(post.id), class: 'side-nav-item' do %>
+              <%= link_to post_path(post.id), class: 'side-nav-item' do %>
                 <%= image_tag 'noimage.png', size: "150x100" %>
               <% end %>
             <% end %>
@@ -38,8 +38,8 @@
       <br>
       <br>
       <div class="row back-btn-area">
-        <%= render 'public/posts/back', url_path: edit_public_user_path(@user) %>
-        <%= link_to public_user_album_path(@user), class: 'btn' do %>
+        <%= render 'public/posts/back', url_path: edit_user_path(@user) %>
+        <%= link_to user_album_path(@user), class: 'btn' do %>
           <i class="fa-regular fa-images fa-2xl"></i>
         <% end %>
       </div>

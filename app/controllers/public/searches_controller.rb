@@ -6,7 +6,7 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
 
     if @word.blank?
-      redirect_to public_posts_path
+      redirect_to posts_path
       return
     end
 

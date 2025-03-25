@@ -68,8 +68,8 @@
                   <td> 
                   <% if post_comment.user == current_user %>
                     <span class="row btn-area">
-                      <%= link_to "Edit", edit_public_post_post_comment_path(@post, post_comment.id), class: "edit-button" %>
-                      <%= link_to "Delete", public_post_post_comment_path(@post, post_comment.id), method: :delete , class: "delete-button" %>
+                      <%= link_to "Edit", edit_post_post_comment_path(@post, post_comment.id), class: "edit-button" %>
+                      <%= link_to "Delete", post_post_comment_path(@post, post_comment.id), method: :delete , class: "delete-button" %>
                     </span>
                   <% end %>
                   </td>

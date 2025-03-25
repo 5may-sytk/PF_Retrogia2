@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   
-    return redirect_to private_user_public_users_path unless @user.is_public? || current_user == @user
+    return redirect_to private_user_users_path unless @user.is_public? || current_user == @user
     if current_user == @user
       @posts = @user.posts.where(visibility: 0..3).order(created_at: :desc).page(params[:page]).per(3)
       @allow = true
@@ -18,7 +18,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user.id == current_user.id
-      redirect_to public_user_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 
@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to public_user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     else
       flash.now[:notice] = "更新に失敗しました。"
       render :edit
@@ -60,7 +60,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end 
   
