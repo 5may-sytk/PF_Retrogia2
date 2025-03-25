@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
 
   # フォローしているユーザーとのアクティブなリレーションシップ
   has_many :active_relationships, class_name: "Relationship", 
@@ -51,9 +52,9 @@ class User < ApplicationRecord
     self.favorites.includes(:post).map(&:post)
   end
 
-  def bookmarked_posts
-    self.bookmarks.includes(:post).map(&:post)
-  end
+  #def bookmarked_posts
+  #  self.bookmarks.includes(:post).map(&:post)
+  #end
 
 
   def follow(user_id)
