@@ -17,43 +17,51 @@
               <% if admin_signed_in?  %>
               <!-- アドミンヘッダー --> 
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Top', root_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Top', root_path, class: 'btn btn-custom' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Users', admin_users_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Users', admin_users_path, class: 'btn btn-custom' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: 'btn btn-custom' %>
                 </li>
 
               <% elsif user_signed_in? %>
               <!-- ユーザーヘッダー --> 
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Home', posts_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Home', posts_path, class: 'btn btn-custom' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'New', new_post_path, class: 'btn btn-custom', data: {"turbolinks"=>false}, style: 'font-size: 20px; ' %>
+                  <%= link_to 'New', new_post_path, class: 'btn btn-custom', data: {"turbolinks"=>false} %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'MyPage', user_path(current_user.id), class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'MyPage', user_path(current_user.id), class: 'btn btn-custom' %>
                 </li>
                 <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-custom' %>
                 </li>
 
               <% else %>
               <!-- 非ログイン時 --> 
-                <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'About', about_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
-                </li>
-                <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Home', posts_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
-                </li>
-                <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Log in', new_user_session_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
-                </li>
-                <li class="nav-item" style="padding-left: 10px;">
-                  <%= link_to 'Sing up', new_user_registration_path, class: 'btn btn-custom', style: 'font-size: 20px;' %>
+              <li class="nav-item" style="padding-left: 10px;">
+                <%= link_to about_path, class: 'btn btn-custom' do %>
+                  About
+                <% end %>
+              </li>
+              <li class="nav-item" style="padding-left: 10px;">
+                <%= link_to posts_path, class: 'btn btn-custom' do %>
+                  Home
+                <% end %>
+              </li>
+              <li class="nav-item" style="padding-left: 10px;">
+                <%= link_to new_user_session_path, class: 'btn btn-custom' do %>
+                  Log in
+                <% end %>
+              </li>
+              <li class="nav-item" style="padding-left: 10px;">
+                <%= link_to new_user_registration_path, class: 'btn btn-custom' do %>
+                  Sing up
+                <% end %>
               </li>
               <% end %>
             </ul>
