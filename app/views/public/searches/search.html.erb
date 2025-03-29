@@ -9,7 +9,7 @@
     <div class="col-9 searched-content"> 
       <!-- 検索結果画面 -->
       <h2 class = "title"> Results Search</h2> 
-      <div class="row ">
+      <div class=" search-results">
         <table class="table table-hover table-inverse">
           <% if @range == "ユーザー" %>
             <tbody>
@@ -18,17 +18,17 @@
                   <td></td>
                   <td>
                     <% if user.user_image.attached? %>
-                      <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                      <%= link_to user_path(user.id), class: 'post-user' do %>
                         <%= image_tag url_for(user.user_image), size: "150x125" %>
                       <% end %>
                     <% else %>
-                      <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                      <%= link_to user_path(user.id), class: 'post-user' do %>
                         <%= image_tag 'icon/camera.logo2.png', size: "150x125" %>
                       <% end %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to public_user_path(user.id), class: 'post-user' do %>
+                    <%= link_to user_path(user.id), class: 'post-user' do %>
                       <%= user.name %></td>
                     <% end %>
                 </tr>
@@ -66,6 +66,12 @@
             </tbody>
           <% end %>
         </table>
+
+        <span id="back">
+          <a class="back-link" href="#">
+          <i class="fa-solid fa-angle-up fa-xl " ></i>
+          </a>
+        </span>
       </div>
     </div>
   </div>
