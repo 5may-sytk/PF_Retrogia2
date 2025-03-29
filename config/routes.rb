@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   }
 
   devise_for :users, skip: [:passwords], controllers: {
-    sessions:      'public/sessions',
     passwords:     'public/passwords',
-    registrations: 'public/registrations'
+    registrations: 'public/registrations',
+    sessions:      'public/sessions'
+    }, path_names: {
+      sign_in: 'Log_in'
   }
 
   devise_scope :user do
