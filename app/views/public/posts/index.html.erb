@@ -20,7 +20,7 @@
       </div>
       <br>
 
-      <div class="posts">
+      <div class="row posts">
         <table class='table table-hover'>
           <tbody>
             <% @posts.each do |post| %>
@@ -32,6 +32,12 @@
       <div class="pager-area">
         <%= paginate @posts %>
       </div>
+
+      <span id="back">
+        <a class="back-link" href="#">
+        <i class="fa-solid fa-angle-up fa-xl " ></i>
+        </a>
+      </span>
     </div>
   </div>
 </div>
