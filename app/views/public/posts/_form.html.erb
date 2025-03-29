@@ -7,8 +7,8 @@
       <% if post.post_image.attached? %>
         <%= image_tag post.post_image, class: "post-image", size: "150x125" %>
       <% end %>
-      <br>
       <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
+      <br>
     </div>
   </div>
 

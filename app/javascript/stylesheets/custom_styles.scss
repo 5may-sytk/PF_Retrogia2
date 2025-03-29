@@ -13,7 +13,12 @@ header {
 }
 
 .btn-custom {
-  color: #622d18;
+  color: rgba(98, 45, 24, 0.8);
+  font-size: 20px;
+  transition: background-color 3s; /* アニメーションを追加 */
+}
+.btn-custom:hover {
+  color: rgba(84, 145, 127, 0.8);
 }
 
 footer {
