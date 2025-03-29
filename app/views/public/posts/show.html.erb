@@ -26,7 +26,7 @@
         <% if @user == current_user %>
         <span class="row btn-area">
           <%= button_to "Edit", edit_post_path(@post), method: :get , class: "edit-button" %>
-          <%= button_to "Delete", post_path(@post), method: :delete , class: "delete-button" %>
+          <%= button_to "Delete", post_path(@post), method: :delete , class: "delete-button", data: { confirm: '本当に削除しますか？' } %>
         </span>
         <% end %>
         <br>
