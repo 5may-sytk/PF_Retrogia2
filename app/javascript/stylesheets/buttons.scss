@@ -5,7 +5,7 @@
   border: 2px solid #622d18;
   color: white;
   background-color:#622d18;
-  transition: background-color 0.3s; /* アニメーションを追加 */
+  transition: background-color 1.5s; /* アニメーションを追加 */
 }
 .login-button:hover {
   background-color: transparent; /* 背景色を透明にする */
@@ -20,7 +20,7 @@
   text-align: center;
   cursor: pointer;
   border: 2px solid #545a91;
-  transition: background-color 0.3s; /* アニメーションを追加 */
+  transition: background-color 1s; /* アニメーションを追加 */
   background-color: #545a91; 
   color: white; /* デフォルトのテキスト色 */
   font-weight: bold;
@@ -79,7 +79,7 @@
   text-align: center;
   cursor: pointer;
   border: 2px solid #915467;
-  transition: background-color 0.3s; /* アニメーションを追加 */
+  transition: background-color 1s; /* アニメーションを追加 */
   background-color:#915467;
   color: white;
   font-weight: bold;
@@ -98,7 +98,7 @@
   text-align: center;
   cursor: pointer;
   border: 2px solid #545a91;
-  transition: background-color 0.3s; /* アニメーションを追加 */
+  transition: background-color 1s; /* アニメーションを追加 */
   background-color: #545a91; 
   color: white; /* デフォルトのテキスト色 */
   font-weight: bold;
@@ -155,7 +155,7 @@
   background-color: transparent; /* 背景色を透明にする */
   color: #54917f; /* ホバー時のテキスト色 */
   border: 2px solid #54917f;
-  transition: background-color 0.3s; /* アニメーションを追加 */
+  transition: background-color 1s; /* アニメーションを追加 */
   font-weight: bold;
 }
 .unfollow-button:hover {

@@ -5,8 +5,9 @@
 }
 
 header {
-  background-color: rgba(98, 45, 24, 0.2);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 横方向、縦方向、ぼかし量、色を指定 */
+  background-color: rgba(98, 45, 24, 0.1);
+  border-bottom: 2px solid rgba(98, 45, 24, 0.4);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  /*横方向、縦方向、ぼかし量、色を指定 */
   z-index: 1000;
   font-family: Century Gothic;
 }
@@ -16,9 +17,13 @@ header {
 }
 
 footer {
-  background-color: rgba(98, 45, 24, 0.2);
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* 横方向、縦方向、ぼかし量、色を指定 */
+  background-color: rgba(98, 45, 24, 0.1);
+  border-top: 2px solid rgba(98, 45, 24, 0.4);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2); /* 横方向、縦方向、ぼかし量、色を指定 */
   z-index: 1000;
+}
+.footer-area {
+  padding: 10px;
 }
 
 body {
