@@ -1,6 +1,6 @@
-<%= form_with model: [post, post_comment], local: false do |f| %>
+<%= form_with model: [post, post_comment], local: false, remote: true do |f| %>
   <div class="comment-form">
-    <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control", size:40; %>
+    <%= f.text_area :comment, placeholder: "コメントをここに入力してください", id: "c", class: "form-control", size:40; %>
   </div>
   <div class="comment-form">
     <%= f.submit submit_text, class: "form-control com-submit-btn" %>
