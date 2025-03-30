@@ -48,7 +48,7 @@
               </tr>
               <tr>
                 <th class="col-4 info-title">詳細</th>
-                <td class="col-6"><%= @post.contents %></td>
+                <td class="col-6"><%= simple_format(@post.contents, sanitize: true) %></td>
               </tr>
               <tr>
                 <th class="col-4 info-title">場所</th>
