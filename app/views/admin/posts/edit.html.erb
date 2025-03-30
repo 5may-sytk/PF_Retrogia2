@@ -19,7 +19,7 @@
           <!-- 投稿ボタン --> 
           <div class="form-group row justify-content-center">
             <%= f.submit "編集", class: "btn btn-sm edit-button" %>
-            <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete , class: "btn btn-sm delete-button" %>
+            <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete , class: "btn btn-sm delete-button", data: { confirm: '本当に削除しますか？' }  %>
             <%= link_to admin_user_posts_path(@user.id), class:"btn back-button" do %>
               戻る
             <% end %>
