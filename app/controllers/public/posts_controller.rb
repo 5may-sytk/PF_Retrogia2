@@ -9,7 +9,6 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.visibility = params[:post][:visibility]
     @post.user_id = current_user.id
-    #results = Vision.image_analysis(post_params[:post_image])
     
     if post_params[:post_image].blank? && !@post.post_image.attached?
       flash.now[:notice] = "画像が投稿されていません。"
@@ -39,12 +38,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if current_user
-      @posts = Post.where(visibility: 0).or(Post.where(user_id: current_user.id)).order(created_at: :desc).page(params[:page])
-    else
-      @posts = Post.where(visibility: 0).order(created_at: :desc).page(params[:page])
-    end
-    
+    @posts = Post.visible_posts(current_user).page(params[:page])
     @post = Post.new
   end
 
