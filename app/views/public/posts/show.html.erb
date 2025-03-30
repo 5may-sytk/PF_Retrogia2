@@ -80,10 +80,7 @@
                 <td class="col-3"></td>
                 <td class="col-1">
                   <!-- コメント -->
-                  <%= link_to post_post_comments_path(@post), class: 'btn post-link' do %>
-                    <i class="fa-solid fa-comment fa-xl"></i>
-                    <%= @post.post_comments.count %> 
-                  <% end %>
+                    <%= render 'public/post_comments/post_comments', post: @post %>
                 </td>
                 <td class="col-1" id="favorite_btn_<%= @post.id %>">
                   <!-- いいね -->

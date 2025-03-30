@@ -1,0 +1,4 @@
+<%= link_to post_post_comments_path(post), class: 'btn post-link', remote: true do %>
+  <i class="fa-solid fa-comment fa-xl"></i>
+  <%= post.post_comments.count %> 
+<% end %>
