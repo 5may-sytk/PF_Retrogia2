@@ -7,22 +7,22 @@
     </div>
 
     <div class="col-10 comment-view"> 
-    <h2 class = "title"> Comment</h2> 
-    <br>
-      <div class="flash">
-        <%= flash[:notice] %>
-      <% if @post_comment.errors.any? %>
-        <div id="error">
-          <ul>
-            <% @post_comment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+      <h2 class = "title"> Comment</h2> 
+      <br>
+        <div class="flash">
+          <%= flash[:notice] %>
+        <% if @post_comment.errors.any? %>
+          <div id="error">
+            <ul>
+              <% @post_comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         </div>
-      <% end %>
-      </div>
-    <br>
-    <!-- コメント作成 -->
+      <br>
+      <!-- コメント作成 -->
       <div class="row c-p-image">
         <div class="col-3">
           <% if @post.post_image.attached? %>
@@ -42,43 +42,45 @@
       </div>
 
       <div class"row comments">
-          <table class="table  table-inline">
-            <thead>
+        <table class="table  table-inline">
+          <thead>
+            <tr>
+              <th></th>
+              <th>コメント</th>
+              <th>ユーザー名</th>
+              <th>投稿時間</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @post_comments.each do |post_comment| %>
               <tr>
-                <th></th>
-                <th>コメント</th>
-                <th>ユーザー名</th>
-                <th>投稿時間</th>
-                <th></th>
+                <td></td>
+                <td>
+                  <%= post_comment.comment %>
+                </td>
+                <td>
+                  <%= post_comment.user.name %>
+                </td>
+                <td>
+                  <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+                </td>
+                <td> 
+                <% if post_comment.user == current_user %>
+                  <span class="row btn-area">
+                    <%= link_to "Edit", edit_post_post_comment_path(@post, post_comment.id), class: "edit-button" %>
+                    <%= link_to "Delete", post_post_comment_path(@post, post_comment.id), method: :delete , class: "delete-button" %>
+                  </span>
+                <% end %>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              <% @post_comments.each do |post_comment| %>
-                <tr>
-                  <td></td>
-                  <td>
-                    <%= post_comment.comment %>
-                  </td>
-                  <td>
-                    <%= post_comment.user.name %>
-                  </td>
-                  <td>
-                    <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-                  </td>
-                  <td> 
-                  <% if post_comment.user == current_user %>
-                    <span class="row btn-area">
-                      <%= link_to "Edit", edit_post_post_comment_path(@post, post_comment.id), class: "edit-button" %>
-                      <%= link_to "Delete", post_post_comment_path(@post, post_comment.id), method: :delete , class: "delete-button" %>
-                    </span>
-                  <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-  
+      <div class="row back-btn-area">
+        <%= link_to "戻る", post_path(@post), class: "back-button" %>
+      </div>
     </div>
   </div>
 </div>

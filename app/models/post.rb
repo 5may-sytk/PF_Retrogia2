@@ -65,6 +65,14 @@ class Post < ApplicationRecord
     end
   end
 
+  scope :visible_posts, -> (current_user) { 
+    if current_user
+      where(visibility: 0).or(where(user_id: current_user.id))
+    else
+      where(visibility: 0)
+    end.order(created_at: :desc)
+  }
+
   private
 
   def create_auto_tags
