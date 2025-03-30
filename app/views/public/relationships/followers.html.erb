@@ -10,6 +10,10 @@
       <h2 class = "title"> <%= @users.name %>さんをフォローしているユーザー</h2> 
       <h5 class = "title"> <%= @users.count %>人にフォローされています</h5>
       <%= render 'follow_user',users:@users %>
+      <br>
+      <div class="row back-btn-area">
+        <%= link_to "戻る", user_path(@user), class: "back-button" %>
+      </div>
     </div>
   </div>
 </div>
