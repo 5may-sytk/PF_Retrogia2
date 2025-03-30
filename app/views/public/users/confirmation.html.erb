@@ -19,7 +19,7 @@
         </div>
 
         <div class="attention-btn-area">
-          <%= button_to "戻る", user_path(current_user.id), method: :get , class: "btn back-button" %>  <%= button_to "退会する", leave_public_users_path, method: :patch, class: "btn delete-button" %>
+          <%= button_to "戻る", user_path(current_user.id), method: :get , class: "btn back-button" %>  <%= button_to "退会する", leave_users_path, method: :patch, class: "btn delete-button" %>
         </div>
       </div>
     </div>
