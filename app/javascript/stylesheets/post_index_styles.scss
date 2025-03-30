@@ -88,7 +88,7 @@
   margin-top: 20px;
 }
 .title::first-letter {
-  color:  rgba(84, 145, 127, );
+  color:  rgb(84, 145, 127);
 }
 
 
@@ -106,12 +106,13 @@
 
 #back {
   position: sticky;
-  bottom:0;
-  left: 95%;
+  bottom:10%;
+  left: 100%;
 }
 .back-link {
   display: inline-block;
-  background-color: rgba(84, 145, 127, 0.4); /* 半透明の背景 */
+  background-color: #b4ccc3; 
+  box-shadow: 10px 0 15px -5px rgba(0, 0, 0, 0.4), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
   padding: 15px;
   border-radius: 50%; /* 円形の背景 */
 }
