@@ -9,7 +9,7 @@
     <div class="col-10 user-show"> 
       <div class="attention-area">
         <div class="attention">
-          <h2 class="font-weight-bold">本当に退会しますか？</h2>
+          <h2 class="attention-title">本当に退会しますか？</h2>
         </div>
 
         <div class="attention-word">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="attention-btn-area">
-          <%= button_to "戻る", user_path(current_user.id), method: :get , class: "btn back-button" %>  <%= button_to "退会する", leave_public_users_path, method: :patch, class: "btn delete-button" %>
+          <%= button_to "戻る", user_path(current_user.id), method: :get , class: "btn back-button" %>  <%= button_to "退会する", leave_users_path, method: :patch, class: "btn delete-button" %>
         </div>
       </div>
     </div>

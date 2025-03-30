@@ -32,7 +32,7 @@
       <th>Introduction</th>
       <td colspan="5"></td>
       <td>
-        <%= user.introduction %>
+        <%= simple_format(user.introduction, sanitize: true) %>
       </td>
       <td></td>
     </tr>
