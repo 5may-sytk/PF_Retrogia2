@@ -4,9 +4,88 @@
   box-sizing: border-box;
 }
 
+.abg-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* グラデーションの背景を擬似要素として適用 */
+.abg-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #a3ccc0, #c5796d);
+  clip-path: ellipse(40% 50% at 50% 0);
+  z-index: -1;
+  animation: gradientMix 20s infinite ease-in-out;
+}
+
+@keyframes gradientMix {
+  0% {
+    background: linear-gradient(to right, #a3ccc0, #c5796d);
+  }
+  10% {
+    background: linear-gradient(to right, #a3c4cc, #c5aa61);
+  }
+  20% {
+    background: linear-gradient(to right, #a3adcc, #b1c561);
+  }
+  30% {
+    background: linear-gradient(to right, #b1a3cc,#7bc561 );
+  }
+  40% {
+    background: linear-gradient(to right, #c8a3cc,#61c57b );
+  }
+  50% {
+    background: linear-gradient(to right, #cca3b9, #61c5b1);
+  }
+  60% {
+    background: linear-gradient(to right, #c8a3cc,#61c57b);
+  }
+  70% {
+    background: linear-gradient(to right, #b1a3cc,#7bc561);
+  }
+  80% {
+    background: linear-gradient(to right, #a3adcc, #b1c561);
+  }
+  90% {
+    background: linear-gradient(to right, #a3c4cc, #c5aa61);
+  }
+  100% {
+    background: linear-gradient(to right, #a3ccc0, #c5796d);
+  }
+}
+
+.about-page {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.6); /* 背景に半透明の白 */
+  /*border: 5px solid transparent; /* ボーダーの太さを設定 */
+  /*border-image: linear-gradient(to right, #eacda3, #d6ae7b) 1;*/
+  border-radius: 30px;
+  box-shadow: 10px 0 15px -5px rgba(0, 0, 0, 0.4), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+.about-title {
+  color: #622d18;
+  text-align: center;
+  padding: 20px;
+}
+.about-title::first-letter {
+  color:  rgb(84, 145, 127);
+}
+
+
 .about-text {
   color: #622d18;
   text-align: center;
   padding: 20px;
-  z-index: 2; 
 }
