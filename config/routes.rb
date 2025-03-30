@@ -3,8 +3,10 @@ Rails.application.routes.draw do
     get 'post_comments/index'
   end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions:      'admin/sessions',
     passwords:     'admin/passwords',
+    sessions:      'admin/sessions',
+    }, path_names: {
+      sign_in: 'Log_in'
   }
 
   devise_for :users, skip: [:passwords], controllers: {

@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row views">
 
-    <div class="col-9 searched-content"> 
+    <div class="col searched-content"> 
       <!-- 検索結果画面 -->
       <h2 class = "title"> Results Search</h2> 
       <div class="row results">
@@ -30,7 +30,9 @@
           </tbody>
         </table>
       </div>
+      <div class="row back-btn-area">
+        <%= link_to "戻る", admin_users_path, class: "back-button" %>
+      </div>
     </div>
-
   </div>
 </div>
