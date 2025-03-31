@@ -25,10 +25,8 @@
       <!-- コメント作成 -->
       <div class="row c-p-image">
         <div class="col-3">
-          <% if @post.post_image.attached? %>
+          <%= link_to post_path(@post.id) do %>
             <%= image_tag url_for(@post.post_image), size: "150x125" %>
-          <% else %>
-            <%= image_tag 'noimage.png', size: "150x125" %>
           <% end %>
         </div>
       
@@ -77,9 +75,6 @@
             <% end %>
           </tbody>
         </table>
-      </div>
-      <div class="row back-btn-area">
-        <%= link_to "戻る", post_path(@post), class: "back-button" %>
       </div>
     </div>
   </div>
