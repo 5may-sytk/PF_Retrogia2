@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   validates :visited_at, presence: true
   #validates :address, presence: true
 
+  # geocode gem 使用
   geocoded_by :address
   after_validation :geocode
 
@@ -57,7 +58,7 @@ class Post < ApplicationRecord
   end
 
   def check_safe_search(results)
-    error_messages = []
+    error_message = []
 
     if results == false
       error_messages << "不適切要素を含む画像は投稿できません"
